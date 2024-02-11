@@ -52,6 +52,51 @@ _If your data was yourself, then the schema would likely be or look like your re
 
 In syntaxe, the schema dictates how you query your data, representing its structure to be returned or the computed result of the data.
 
-A schema can be object-like if the data contains object(s), such as `[{..},{..}]` or `{..}`, or it can be inline if the data is flat, like `[1, 2, ..., n]`. Additionally, it may incorporate one or more operators (just key or key-value pair), such as `[first]`, `[gt:2]`, `[ago:5m]` and so on, which assist in tailoring the result to your requirements.
+A schema can be object-like if the data contains object(s), such as `[{..},{..}]` or `{..}`, or it can be in-line for both object and flat data, like `[1, 2, ..., n]`. Additionally, it may incorporate one or more operators (just key or key-value pair), such as `[first]`, `[gt:2]`, `[ago:5m]` and so on, which assist in tailoring the result to your requirements.
 
 To compose a proper schema, it is essential to always enclose it within backtick symbols (`) to denote its scope.
+
+### Schema examples
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+const sx = new Syntaxe({
+  data: users
+});
+
+/*
+Object-like schema
+1. Extract the specified properties of each object in the array (id, login, type and site_admin)
+2. For each object, rename 'login' to 'username' - [as:"username"] 
+3. Return the first two entries - [first:2] 
+*/
+const olSchemaResult = await sx.query({
+    schema: `{
+        id
+        login[as:"username"]
+        type
+        site_admin
+    }[first:2]`
+});
+console.log(olSchemaResult);
+/*
+Result (based on the current state of the data as returned by 'https://api.github.com/users')
+[
+  { id: 1, username: 'mojombo', type: 'User', site_admin: false },
+  { id: 2, username: 'defunkt', type: 'User', site_admin: false }
+]
+*/
+
+
+/* OR */
+
+
+/* In-line */
+const result = await sx.query();
+console.log(result); // Output: 3
+
+```
