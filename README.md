@@ -35,7 +35,9 @@ const sx = new Syntaxe({
 /* Promise */
 sx.query().then(console.log); // Output: 3
 
+
 /* OR */
+
 
 /* Await */
 const result = await sx.query();
@@ -69,9 +71,9 @@ const sx = new Syntaxe({
 });
 
 /*
-Object-like schema
+Object schema
 1. Extract the specified properties of each object in the array (id, login, type and site_admin)
-2. For each object, rename 'login' to 'username' - [as:"username"] 
+2. For each object, rename 'login' as 'username' - [as:"username"] 
 3. Return the first two entries - [first:2] 
 */
 const olSchemaResult = await sx.query({
@@ -84,7 +86,7 @@ const olSchemaResult = await sx.query({
 });
 console.log(olSchemaResult);
 /*
-Result is based on the current state of the data as returned by 'https://api.github.com/users'
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
 Output:
 [
@@ -105,8 +107,150 @@ In-line
 const inSchemaResult = await sx.query({
     schema: `[btw:[2,8]][size][gt:4]`
 });
-console.log(inSchemaResult); // Output: 6
+console.log(inSchemaResult);
 /*
-Result is based on the current state of the data as returned by 'https://api.github.com/users'
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output: 6
+*/
+```
+## Examples 🎮
+
+### Use case 1 (Pass data and schema to the constructor)
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+/*
+Object schema
+1. Extract the specified properties of each object in the array (id and login)
+2. Return the first five entries - [first:5] 
+*/
+const useCase1 = new Syntaxe({
+    data: users,
+    schema: `{
+        id
+        login
+    }[first:5]`
+});
+console.log(await useCase1.query());
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output:
+[
+  { id: 1, login: 'mojombo' },
+  { id: 2, login: 'defunkt' },
+  { id: 3, login: 'pjhyett' },
+  { id: 4, login: 'wycats' },
+  { id: 5, login: 'ezmobius' }
+]
+*/
+```
+### Use case 2 (Invoke the data and schema methods separately)
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+/*
+In-line schema
+1. Return the size of the data - [size] 
+*/
+const useCase2 = new Syntaxe();
+useCase2.data(users);
+useCase2.schema(`[size]`);
+console.log(await useCase2.query());
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output: 30
+*/
+```
+### Use case 3 (Pass the data and schema when the query method is invoked)
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+/*
+Object schema
+1. Extract the specified property of each object in the array (login)
+2. For each object, rename 'login' as 'userId' - [as:"userId"]
+3. Return the last entry - [last]
+*/
+const useCase3 = new Syntaxe();
+const useCase3Result = await useCase3.query({
+    data: users,
+    schema: `{
+        login[as:"userId"]
+    }[last]`
+});
+console.log(useCase3Result);
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output:
+{ userId: 'bmizerany' }
+*/
+```
+### Use case 4 (Invoke the data method, pass the schema when query method is invoked, and invoke the schema method)
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+/*
+Object schema
+1. Extract the specified properties of each object in the array (id and login)
+2. Return objects with id less than 5 - [lt:5]
+3. For each object, rename 'login' as 'secureId' - [as:"secureId"]
+*/
+const useCase4 = new Syntaxe();
+useCase4.data(users);
+const useCase4Result1 = await useCase4.query({
+    schema: `{
+        id[lt:5]
+        login[as:"secureId"]
+    }`
+});
+console.log(useCase4Result1);
+
+/*
+Object schema
+1. Extract the specified property of each object in the array (id)
+2. For each object, rename 'id' as 'sn' and only return objects where sn is greater than 5 - [as:"sn"][gt:5]
+3. Return the first 10 entries
+*/
+useCase4.schema(`{
+    id[as:"sn"][gt:5]
+}[first:10]`);
+console.log(await useCase4.query());
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output:
+[
+  { id: 1, secureId: 'mojombo' },
+  { id: 2, secureId: 'defunkt' },
+  { id: 3, secureId: 'pjhyett' },
+  { id: 4, secureId: 'wycats' }
+]
+[
+  { sn: 6 },  { sn: 7 },
+  { sn: 17 }, { sn: 18 },
+  { sn: 19 }, { sn: 20 },
+  { sn: 21 }, { sn: 22 },
+  { sn: 23 }, { sn: 25 }
+]
 */
 ```
