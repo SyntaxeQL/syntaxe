@@ -35,9 +35,7 @@ const sx = new Syntaxe({
 /* Promise */
 sx.query().then(console.log); // Output: 3
 
-
 /* OR */
-
 
 /* Await */
 const result = await sx.query();
@@ -95,9 +93,7 @@ Output:
 ]
 */
 
-
 /* OR */
-
 
 /*
 In-line
@@ -114,6 +110,45 @@ Result is based on the state of the data returned by 'https://api.github.com/use
 Output: 6
 */
 ```
+## Methods 🏒
+
+<table>
+<tr>
+<td align="left">Method</td>
+<td align="left">Description</td>
+<td align="left">Example</td>
+</tr>
+<tr>
+<td align="left">
+  
+`.data(data)`
+
+</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">
+  
+`.schema(schema)`
+
+</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">
+  
+`.query()`
+
+</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</table>
+
 ## Examples 🎮
 
 ### Use case 1 (Pass data and schema to the constructor)
