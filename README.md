@@ -48,11 +48,11 @@ console.log(result); // Output: 3
 
 ### Wotsa Skee-ma-ah?
 
-_If your data was yourself, then the schema would likely be or look like your reflection._
+_If your data were yourself, then the schema would likely be or look like your reflection._
 
-In syntaxe, the schema dictates how you query your data, representing its structure to be returned or the computed result of the data.
+In syntaxe, the schema determines how your data is queried. It represents the structure of the value to be returned or the computed result of the data.
 
-A schema can be object-like if the data contains object(s), such as `[{..},{..}]` or `{..}`, or it can be in-line for both object and flat data, like `[1, 2, ..., n]`. Additionally, it may incorporate one or more operators (just key or key-value pair), such as `[first]`, `[gt:2]`, `[ago:5m]` and so on, which assist in tailoring the result to your requirements.
+A schema can be object-like if the data contains object(s), such as `[{..},{..}]` or `{..}`, or it can be in-line for any type of data. Additionally, it may incorporate one or more operators (just key or key-value pair), such as `[first]`, `[gt:2]`, `[ago:"5m"]` and so on, which assist in tailoring the result to your requirements.
 
 To compose a proper schema, it is essential to always enclose it within backtick symbols (`) to denote its scope.
 
