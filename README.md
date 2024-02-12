@@ -84,7 +84,9 @@ const olSchemaResult = await sx.query({
 });
 console.log(olSchemaResult);
 /*
-Result (based on the current state of the data as returned by 'https://api.github.com/users')
+Result is based on the current state of the data as returned by 'https://api.github.com/users'
+
+Output:
 [
   { id: 1, username: 'mojombo', type: 'User', site_admin: false },
   { id: 2, username: 'defunkt', type: 'User', site_admin: false }
@@ -95,8 +97,16 @@ Result (based on the current state of the data as returned by 'https://api.githu
 /* OR */
 
 
-/* In-line */
-const result = await sx.query();
-console.log(result); // Output: 3
-
+/*
+In-line
+1. Extract the entries from index 2 to index 8
+2. Return the size of the extracted data, if it is greater than 4
+*/
+const inSchemaResult = await sx.query({
+    schema: `[btw:[2,8]][size][gt:4]`
+});
+console.log(inSchemaResult); // Output: 6
+/*
+Result is based on the current state of the data as returned by 'https://api.github.com/users'
+*/
 ```
