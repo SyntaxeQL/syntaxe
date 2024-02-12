@@ -112,11 +112,14 @@ Output: 6
 ```
 ## Methods 🏒
 
+### Class methods
+
 <table>
 <tr>
 <td align="left">Method</td>
 <td align="left">Description</td>
-<td align="left">Example</td>
+<td align="left">Usage</td>
+<td align="left">Returns</td>
 </tr>
 <tr>
 <td align="left">
@@ -124,18 +127,37 @@ Output: 6
 `.data(data)`
 
 </td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
+<td align="left">This method is used to define the data to be queried.</td>
+<td align="left">
 
+```js
+const useCase1 = new Syntaxe({
+  schema: `[first]`
+});
+useCase1.data([1,2,3,4,5]);
+```
+  
+</td>
+<td align="left">Syntaxe object (useful for method chaining)</td>
+</tr>
 <tr>
 <td align="left">
   
 `.schema(schema)`
 
 </td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left">This nethod is used to define the schema for querying the data.</td>
+<td align="left">
+
+```js
+const useCase1 = new Syntaxe({
+  data: [1,2,3,4,5]
+});
+useCase1.schema(`[last:2]`);
+```
+  
+</td>
+<td align="left">Syntaxe object (useful for method chaining)</td>
 </tr>
 
 <tr>
@@ -144,10 +166,37 @@ Output: 6
 `.query()`
 
 </td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left">This is an asynchronous method that uses the defined schema to query the defined data.</td>
+<td align="left">
+
+```js
+const useCase1 = new Syntaxe();
+useCase1.data([1,2,3,4,5]);
+useCase1.schema(`[btw:[2,4]]`);
+const result = await useCase1.query();
+```
+  
+</td>
+<td align="left">
+
+  Value: `Object`, `Array`, `String`, `Number` or `Boolean`
+
+</td>
 </tr>
 </table>
+
+### Method chaining
+
+Syntaxe methods can be chained together to define the properties required to perform a query.
+
+```js
+const useCase1 = new Syntaxe();
+const result = await useCase1
+                      .data(['apple', 'banana', 'orange'])
+                      .schema(`[last]`)
+                      .query();
+console.log(result); // Output: 'orange'
+```
 
 ## Examples 🎮
 
