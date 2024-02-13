@@ -308,6 +308,17 @@ const useCase4Result1 = await useCase4.query({
     }`
 });
 console.log(useCase4Result1);
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output:
+[
+  { id: 1, secureId: 'mojombo' },
+  { id: 2, secureId: 'defunkt' },
+  { id: 3, secureId: 'pjhyett' },
+  { id: 4, secureId: 'wycats' }
+]
+*/
 
 /*
 Object schema
@@ -323,12 +334,6 @@ console.log(await useCase4.query());
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
 Output:
-[
-  { id: 1, secureId: 'mojombo' },
-  { id: 2, secureId: 'defunkt' },
-  { id: 3, secureId: 'pjhyett' },
-  { id: 4, secureId: 'wycats' }
-]
 [
   { sn: 6 },  { sn: 7 },
   { sn: 17 }, { sn: 18 },
