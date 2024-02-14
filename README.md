@@ -6,11 +6,12 @@ Syntaxe
 
 <br/>
 
-## Introduction 🧋
+# Introduction
 
 _Syntaxe is a data query library inspired by mongodb and graphql._
 
 Syntaxe, with the help of a schema and a variety of operators, can be used to perform any number of query operations on most types of data e.g. String, Object or Array.
+
 
 # Installation
 
@@ -42,6 +43,7 @@ const result = await sx.query();
 console.log(result); // Output: 3
 
 ```
+
 # Usage
 
 ## Schema ✍🏽️
@@ -110,6 +112,7 @@ Result is based on the state of the data returned by 'https://api.github.com/use
 Output: 6
 */
 ```
+
 ## Methods 🏒
 
 ### Class methods
@@ -179,7 +182,7 @@ const result = await useCase1.query();
 </td>
 <td align="left">
 
-  Value: `Object`, `Array`, `String`, `Number` or `Boolean`
+  Value: `Object`, `Array`, `String`, `Number`, `Boolean` or `undefined`
 
 </td>
 </tr>
@@ -343,3 +346,102 @@ Output:
 ]
 */
 ```
+### Use case 5 (Invoke both data and schema methods by chaining them to perform a query)
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+/*
+Object schema
+1. Extract the specified properties of each object in the array (id, login and type)
+2. Return objects with any type that is not equal to "user" - [nei:"user"] (case-insensitive)
+*/
+const useCase5 = new Syntaxe();
+const useCase5Result = await useCase5
+                              .data(users)
+                              .schema(`{
+                                id
+                                login
+                                type[nei:"user"]
+                              }`)                              
+                              .query();
+console.log(useCase5Result);
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output:
+[ { id: 44, login: 'errfree', type: 'Organization' } ]
+*/
+```
+### Use case 6 (Using the .then() Promise method)
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+/*
+Object schema
+1. Extract the specified property of each object in the array (type)
+2. Process objects where type is equal to "user" - [eqi:"user"] (case-insensitive)
+3. Return the size of the result
+*/
+const useCase6 = new Syntaxe();
+const useCase6Result = useCase6
+                        .data(users)
+                        .schema(`{
+                            type[eqi:"user"]
+                        }[size]`)
+                        .query();
+
+useCase6Result.then(console.log);
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Output:
+29
+*/
+```
+
+# Operators
+
+## What are those❓
+
+Operators are an essential part of performing queries with syntaxe, they can be used in conjunction with a schema to filter or mutate the data.
+
+Operators are always enclosed in square brackets `[]`, and can be surgical (mutate data) or logical (filter based on conditions).
+
+## Surgical Operators
+
+<table>
+<tr>
+<td align="left">Operator</td>
+<td align="left">Description</td>
+<td align="left">Usage</td>
+</tr>
+
+<tr>
+<td align="left">
+  
+`[as]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+</table>
