@@ -415,7 +415,11 @@ Operators are an essential part of performing queries with syntaxe, they can be 
 
 Operators are always enclosed in square brackets `[]`, and can be surgical (mutate data) or logical (filter based on conditions).
 
-## Surgical Operators
+## Surgical Operators 💉
+
+Surgical operators cause the data to mutate and return the mutated result.
+
+When used in conjuction with logical operator(s), the result of the mutation is piped into the succeeding logical operator(s). 
 
 <table>
 <tr>
@@ -424,10 +428,2210 @@ Operators are always enclosed in square brackets `[]`, and can be surgical (muta
 <td align="left">Usage</td>
 </tr>
 
+<!-- 1 -->
 <tr>
 <td align="left">
   
 `[as]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 2 -->
+<tr>
+<td align="left">
+  
+`[news]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 3 -->
+<tr>
+<td align="left">
+  
+`[size]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 4 -->
+<tr>
+<td align="left">
+  
+`[first]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 5 -->
+<tr>
+<td align="left">
+  
+`[last]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 6 -->
+<tr>
+<td align="left">
+  
+`[btw]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 7 -->
+<tr>
+<td align="left">
+  
+`[dist]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+</table>
+
+## Logical Operators 🧠
+
+Logical operators do not cause the data to mutate, and they only return the data if the condition(s) created by the operator(s) is/are met.
+
+_The data queried by logical operators can be the original value data, or the mutated result of surgical operators._
+
+<table>
+<tr>
+<td align="left">Operator</td>
+<td align="left">Description</td>
+<td align="left">Usage</td>
+</tr>
+
+<!-- 1 -->
+<tr>
+<td align="left">
+  
+`[mode]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 2 -->
+<tr>
+<td align="left">
+  
+`[eq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 3 -->
+<tr>
+<td align="left">
+  
+`[eqi]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 4 -->
+<tr>
+<td align="left">
+  
+`[ne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 5 -->
+<tr>
+<td align="left">
+  
+`[nei]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 6 -->
+<tr>
+<td align="left">
+  
+`[gt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 7 -->
+<tr>
+<td align="left">
+  
+`[gte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 8 -->
+<tr>
+<td align="left">
+  
+`[lt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 9 -->
+<tr>
+<td align="left">
+  
+`[lte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 10 -->
+<tr>
+<td align="left">
+  
+`[nn]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 11 -->
+<tr>
+<td align="left">
+  
+`[gte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 12 -->
+<tr>
+<td align="left">
+  
+`[in]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 13 -->
+<tr>
+<td align="left">
+  
+`[nin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 14 -->
+<tr>
+<td align="left">
+  
+`[ini]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 15 -->
+<tr>
+<td align="left">
+  
+`[nini]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 16 -->
+<tr>
+<td align="left">
+  
+`[regex]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 17 -->
+<tr>
+<td align="left">
+  
+`[regexne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 18 -->
+<tr>
+<td align="left">
+  
+`[regexin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 19 -->
+<tr>
+<td align="left">
+  
+`[regexnin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 20 -->
+<tr>
+<td align="left">
+  
+`[seq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 21 -->
+<tr>
+<td align="left">
+  
+`[sne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 22 -->
+<tr>
+<td align="left">
+  
+`[sgt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 23 -->
+<tr>
+<td align="left">
+  
+`[slt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 24 -->
+<tr>
+<td align="left">
+  
+`[sgte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 25 -->
+<tr>
+<td align="left">
+  
+`[slte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 26 -->
+<tr>
+<td align="left">
+  
+`[sin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 27 -->
+<tr>
+<td align="left">
+  
+`[snin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 28 -->
+<tr>
+<td align="left">
+  
+`[dteq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 29 -->
+<tr>
+<td align="left">
+  
+`[dtne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 30 -->
+<tr>
+<td align="left">
+  
+`[dtgt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 31 -->
+<tr>
+<td align="left">
+  
+`[dtlt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 32 -->
+<tr>
+<td align="left">
+  
+`[dtgte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 33 -->
+<tr>
+<td align="left">
+  
+`[dtlte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 34 -->
+<tr>
+<td align="left">
+  
+`[dtin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 35 -->
+<tr>
+<td align="left">
+  
+`[dtnin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 36 -->
+<tr>
+<td align="left">
+  
+`[dtmeq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 37 -->
+<tr>
+<td align="left">
+  
+`[dtmne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 38 -->
+<tr>
+<td align="left">
+  
+`[dtmgt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 39 -->
+<tr>
+<td align="left">
+  
+`[dtmlt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 40 -->
+<tr>
+<td align="left">
+  
+`[dtmgte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 41 -->
+<tr>
+<td align="left">
+  
+`[dtmlte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 42 -->
+<tr>
+<td align="left">
+  
+`[dtmin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 43 -->
+<tr>
+<td align="left">
+  
+`[dtmnin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 44 -->
+<tr>
+<td align="left">
+  
+`[yeq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 45 -->
+<tr>
+<td align="left">
+  
+`[yne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 46 -->
+<tr>
+<td align="left">
+  
+`[ygt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 47 -->
+<tr>
+<td align="left">
+  
+`[ylt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 48 -->
+<tr>
+<td align="left">
+  
+`[ygte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 49 -->
+<tr>
+<td align="left">
+  
+`[ylte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 50 -->
+<tr>
+<td align="left">
+  
+`[yin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 51 -->
+<tr>
+<td align="left">
+  
+`[ynin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 52 -->
+<tr>
+<td align="left">
+  
+`[meq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 53 -->
+<tr>
+<td align="left">
+  
+`[mne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 54 -->
+<tr>
+<td align="left">
+  
+`[mgt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 55 -->
+<tr>
+<td align="left">
+  
+`[mlt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 56 -->
+<tr>
+<td align="left">
+  
+`[mgte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 57 -->
+<tr>
+<td align="left">
+  
+`[mlte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 58 -->
+<tr>
+<td align="left">
+  
+`[min]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 59 -->
+<tr>
+<td align="left">
+  
+`[mnin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 60 -->
+<tr>
+<td align="left">
+  
+`[today]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 61 -->
+<tr>
+<td align="left">
+  
+`[deq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 62 -->
+<tr>
+<td align="left">
+  
+`[dne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 63 -->
+<tr>
+<td align="left">
+  
+`[dgt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 64 -->
+<tr>
+<td align="left">
+  
+`[dlt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 65 -->
+<tr>
+<td align="left">
+  
+`[dgte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 66 -->
+<tr>
+<td align="left">
+  
+`[dlte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 67 -->
+<tr>
+<td align="left">
+  
+`[din]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 68 -->
+<tr>
+<td align="left">
+  
+`[dnin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 69 -->
+<tr>
+<td align="left">
+  
+`[heq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 70 -->
+<tr>
+<td align="left">
+  
+`[hne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 71 -->
+<tr>
+<td align="left">
+  
+`[hgt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 72 -->
+<tr>
+<td align="left">
+  
+`[hlt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 73 -->
+<tr>
+<td align="left">
+  
+`[hgte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 74 -->
+<tr>
+<td align="left">
+  
+`[hlte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 75 -->
+<tr>
+<td align="left">
+  
+`[hin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 76 -->
+<tr>
+<td align="left">
+  
+`[hnin]`  
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 77 -->
+<tr>
+<td align="left">
+  
+`[hinrange]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 78 -->
+<tr>
+<td align="left">
+  
+`[hninrange]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 79 -->
+<tr>
+<td align="left">
+  
+`[mineq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 80 -->
+<tr>
+<td align="left">
+  
+`[minne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 81 -->
+<tr>
+<td align="left">
+  
+`[mingt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 82 -->
+<tr>
+<td align="left">
+  
+`[minlt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 83 -->
+<tr>
+<td align="left">
+  
+`[mingte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 84 -->
+<tr>
+<td align="left">
+  
+`[minlte]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 85 -->
+<tr>
+<td align="left">
+  
+`[minin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 86 -->
+<tr>
+<td align="left">
+  
+`[minnin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 87 -->
+<tr>
+<td align="left">
+  
+`[mininrange]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 88 -->
+<tr>
+<td align="left">
+  
+`[minninrange]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 89 -->
+<tr>
+<td align="left">
+  
+`[teq]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 90 -->
+<tr>
+<td align="left">
+  
+`[tne]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 91 -->
+<tr>
+<td align="left">
+  
+`[tgt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 92 -->
+<tr>
+<td align="left">
+  
+`[tlt]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 93 -->
+<tr>
+<td align="left">
+  
+`[tin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 94 -->
+<tr>
+<td align="left">
+  
+`[tnin]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 95 -->
+<tr>
+<td align="left">
+  
+`[tinrange]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 96 -->
+<tr>
+<td align="left">
+  
+`[tninrange]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 97 -->
+<tr>
+<td align="left">
+  
+`[ago]`
+
+</td>
+<td align="left">Changes a property's name to another.</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 98 -->
+<tr>
+<td align="left">
+  
+`[agoin]`
 
 </td>
 <td align="left">Changes a property's name to another.</td>
