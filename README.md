@@ -50,7 +50,7 @@ console.log(result); // Output: 3
 
 ### Wotsa Skee-ma-ah?
 
-_If your data were yourself, then the schema would likely be or look like your reflection._
+_If the data were yourself, the schema would likely resemble your reflection._
 
 In syntaxe, the schema determines how your data is queried. It represents the structure of the value to be returned or the computed result of the data.
 
