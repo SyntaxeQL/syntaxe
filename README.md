@@ -149,7 +149,7 @@ useCase1.data([1,2,3,4,5]);
 `.schema(schema)`
 
 </td>
-<td align="left">This nethod is used to define the schema for querying the data.</td>
+<td align="left">This method is used to define the schema for querying the data.</td>
 <td align="left">
 
 ```js
@@ -169,7 +169,7 @@ useCase1.schema(`[last:2]`);
 `.query()`
 
 </td>
-<td align="left">This is an asynchronous method that uses the defined schema to query the defined data.</td>
+<td align="left">This is an asynchronous method that uses the defined schema to query the set data.</td>
 <td align="left">
 
 ```js
