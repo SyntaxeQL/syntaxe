@@ -2529,7 +2529,7 @@ new Syntaxe({
 `[tin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Checks if time matches any of the provided time values in an array.</td>
 <td align="left">
 
 ```js
@@ -2550,7 +2550,7 @@ new Syntaxe({
 `[tnin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Checks if time does not match any of the provided time values in an array.</td>
 <td align="left">
 
 ```js
@@ -2571,7 +2571,7 @@ new Syntaxe({
 `[tinrange]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Checks if time is in provided time range.</td>
 <td align="left">
 
 ```js
@@ -2592,7 +2592,7 @@ new Syntaxe({
 `[tninrange]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Checks if time is not in provided time range.</td>
 <td align="left">
 
 ```js
@@ -2613,7 +2613,7 @@ new Syntaxe({
 `[ago]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Checks if a datetime value matches a provided lapsed time period.</td>
 <td align="left">
 
 ```js
@@ -2634,7 +2634,7 @@ new Syntaxe({
 `[agoin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Checks if a datetime value falls in a given datetime range.</td>
 <td align="left">
 
 ```js
