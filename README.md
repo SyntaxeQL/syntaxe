@@ -440,6 +440,7 @@ When used in conjuction with logical operator(s), the result of the mutation is 
 
 ```js
 new Syntaxe({
+  data: [{ id: 1, login: "john" }],
   schema: `{
     login [as:"username"]
   }`
@@ -460,10 +461,22 @@ new Syntaxe({
 <td align="left">
 
 ```js
+// removes extra whitespace
+const schemaOne = `{
+  title [news]
+}`;
+
+// replaces extra whitespace
+const schemaTwo = `{
+  title [news:"*"]
+}`;
+
 new Syntaxe({
-  schema: `{
-    login [as:"username"]
-  }`
+  data: [{
+    id: 1,
+    title: "Harry Potter and the Philosopher   's Stone"
+  }],
+  schema: schemaOne // or schemaTwo
 });
 ```
   
@@ -481,10 +494,19 @@ new Syntaxe({
 <td align="left">
 
 ```js
+// removes any whitespace
+const schemaOne = `{
+  title [nws]
+}`;
+
+// replaces any whitespace
+const schemaTwo = `{
+  title [nws:"*"]
+}`;
+
 new Syntaxe({
-  schema: `{
-    login [as:"username"]
-  }`
+  data: [{ id: 1, title: "Tha no s" }],
+  schema: schemaOne // or schemaTwo
 });
 ```
   
@@ -503,8 +525,12 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
   schema: `{
-    login [as:"username"]
+    currencies [as:"curr"][size]
   }`
 });
 ```
@@ -523,10 +549,22 @@ new Syntaxe({
 <td align="left">
 
 ```js
+// first entry
+const schemaOne = `{
+  currencies [first]
+}`;
+
+// first 3 entries
+const schemaTwo = `{
+  currencies [first:3]
+}`;
+
 new Syntaxe({
-  schema: `{
-    login [as:"username"]
-  }`
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
+  schema: schemaOne // or schemaTwo
 });
 ```
   
@@ -540,14 +578,26 @@ new Syntaxe({
 `[last]`
 
 </td>
-<td align="left">Returns the last entry or specified number of entries (if specified) of an Array from the bottom</td>
+<td align="left">Returns the last entry or specified number of entries (if specified) of an Array from the top</td>
 <td align="left">
 
 ```js
+// last entry
+const schemaOne = `{
+  currencies [last]
+}`;
+
+// last 3 entries
+const schemaTwo = `{
+  currencies [last:3]
+}`;
+
 new Syntaxe({
-  schema: `{
-    login [as:"username"]
-  }`
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
+  schema: schemaOne // or schemaTwo
 });
 ```
   
@@ -561,14 +611,29 @@ new Syntaxe({
 `[btw]`
 
 </td>
-<td align="left">Returns the entries of an Array specified by a [<minimum-index>, <maximum-index>] range. NOTE: If just one index is provided as such [<index>], the minimum index defaults to 0</td>
+<td align="left">
+  Returns the entries of an Array specified by a [minimum-index, maximum-index] range.
+  NOTE: If just one index is provided as such [index], the minimum index defaults to 0
+</td>
 <td align="left">
 
 ```js
+// from entry 1 to 2 (same as [first:2])
+const schemaOne = `{
+  currencies [btw:2]
+}`;
+
+// from entry 3 to 5
+const schemaTwo = `{
+  currencies [btw:[2,5]]
+}`;
+
 new Syntaxe({
-  schema: `{
-    login [as:"username"]
-  }`
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
+  schema: schemaOne // or schemaTwo
 });
 ```
   
@@ -582,14 +647,38 @@ new Syntaxe({
 `[dist]`
 
 </td>
-<td align="left">Returns a distinct list of values (applies to Array). NOTE: If a value is assigned to the 'dist' operator, it is used to filter existing objects in the array</td>
+<td align="left">
+  Returns a list of distinct values (applies to Array).
+  NOTE: If a value is assigned to the 'dist' operator, it is used to filter existing objects in the array</td>
 <td align="left">
 
 ```js
+// distinct values
+const schemaOne = `{
+  currencies [dist]
+}`;
+
+/*
+  distinct values
+  (objects distinguished by their code property)
+*/
+const schemaTwo = `{
+  currencies [dist:"code"]
+}`;
+
 new Syntaxe({
-  schema: `{
-    login [as:"username"]
-  }`
+  data: [{
+    id: 1,
+    currencies: [
+      "ngn",
+      "usd",
+      { name: "Pound Sterling", code: "gbp" },
+      { name: "Euro", code: "eur" },
+      { name: "Pound Sterling", code: "gbp" },
+      "inr"
+    ]
+  }],
+  schema: schemaOne // or schemaTwo
 });
 ```
   
