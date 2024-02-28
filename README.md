@@ -130,7 +130,7 @@ Output: 6
 `.data(data)`
 
 </td>
-<td align="left">This method is used to define the data to be queried.</td>
+<td align="left">This method is used to define the data to be queried</td>
 <td align="left">
 
 ```js
@@ -149,7 +149,7 @@ useCase1.data([1,2,3,4,5]);
 `.schema(schema)`
 
 </td>
-<td align="left">This method is used to define the schema for querying the data.</td>
+<td align="left">This method is used to define the schema for querying the data</td>
 <td align="left">
 
 ```js
@@ -169,7 +169,7 @@ useCase1.schema(`[last:2]`);
 `.query()`
 
 </td>
-<td align="left">This is an asynchronous method that uses the defined schema to query the set data.</td>
+<td align="left">This is an asynchronous method that uses the defined schema to query the set data</td>
 <td align="left">
 
 ```js
@@ -435,7 +435,7 @@ When used in conjuction with logical operator(s), the result of the mutation is 
 `[as]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Substitues a property name for another (the new property name returned will be the value assigned to the 'as' operator)</td>
 <td align="left">
 
 ```js
@@ -456,7 +456,7 @@ new Syntaxe({
 `[news]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">'No Extra WhiteSpace' removes any extra whitespace in a string value or replaces it with any value provided</td>
 <td align="left">
 
 ```js
@@ -474,10 +474,10 @@ new Syntaxe({
 <tr>
 <td align="left">
   
-`[size]`
+`[nws]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">'No WhiteSpace' removes any whitespace in a string or replaces it with any value provided</td>
 <td align="left">
 
 ```js
@@ -495,10 +495,10 @@ new Syntaxe({
 <tr>
 <td align="left">
   
-`[first]`
+`[size]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Computes and returns the size of a value as the new value (applies to Array, String and Object)</td>
 <td align="left">
 
 ```js
@@ -516,10 +516,10 @@ new Syntaxe({
 <tr>
 <td align="left">
   
-`[last]`
+`[first]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Returns the first entry or specified number of entries (if specified) of an Array from the top</td>
 <td align="left">
 
 ```js
@@ -537,10 +537,10 @@ new Syntaxe({
 <tr>
 <td align="left">
   
-`[btw]`
+`[last]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Returns the last entry or specified number of entries (if specified) of an Array from the bottom</td>
 <td align="left">
 
 ```js
@@ -558,10 +558,31 @@ new Syntaxe({
 <tr>
 <td align="left">
   
+`[btw]`
+
+</td>
+<td align="left">Returns the entries of an Array specified by a [<minimum-index>, <maximum-index>] range. NOTE: If just one index is provided as such [<index>], the minimum index defaults to 0</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  schema: `{
+    login [as:"username"]
+  }`
+});
+```
+  
+</td>
+</tr>
+
+<!-- 8 -->
+<tr>
+<td align="left">
+  
 `[dist]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">Returns a distinct list of values (applies to Array). NOTE: If a value is assigned to the 'dist' operator, it is used to filter existing objects in the array</td>
 <td align="left">
 
 ```js
