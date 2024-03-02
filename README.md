@@ -50,7 +50,7 @@ console.log(result); // Output: 3
 
 ### Wotsa Skee-ma-ah?
 
-_If the data were yourself, the schema would likely resemble your reflection._
+_If your data were you, the schema would bear some resemblance to your reflection._
 
 In syntaxe, the schema determines how your data is queried. It represents the structure of the value to be returned or the computed result of the data.
 
@@ -65,6 +65,32 @@ import Syntaxe from "syntaxe";
 
 const response = await fetch('https://api.github.com/users');
 const users = await response.json();
+/*
+The above users constant will hold an array of objects such as:
+[
+  {
+      "login": "mojombo",
+      "id": 1,
+      "node_id": "MDQ6VXNlcjE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mojombo",
+      "html_url": "https://github.com/mojombo",
+      "followers_url": "https://api.github.com/users/mojombo/followers",
+      "following_url": "https://api.github.com/users/mojombo/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mojombo/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mojombo/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mojombo/subscriptions",
+      "organizations_url": "https://api.github.com/users/mojombo/orgs",
+      "repos_url": "https://api.github.com/users/mojombo/repos",
+      "events_url": "https://api.github.com/users/mojombo/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mojombo/received_events",
+      "type": "User",
+      "site_admin": false
+  },
+  ...
+]
+*/
 
 const sx = new Syntaxe({
   data: users
@@ -73,7 +99,7 @@ const sx = new Syntaxe({
 /*
 Object schema
 1. Extract the specified properties of each object in the array (id, login, type and site_admin)
-2. For each object, rename 'login' as 'username' - [as:"username"] 
+2. For each object, rename 'login' to 'username' - [as:"username"] 
 3. Return the first two entries - [first:2] 
 */
 const olSchemaResult = await sx.query({
@@ -115,7 +141,7 @@ Output: 6
 
 ## Methods 🏒
 
-### Class methods
+### Instance methods
 
 <table>
 <tr>
@@ -270,7 +296,7 @@ const users = await response.json();
 /*
 Object schema
 1. Extract the specified property of each object in the array (login)
-2. For each object, rename 'login' as 'userId' - [as:"userId"]
+2. For each object, rename 'login' to 'userId' - [as:"userId"]
 3. Return the last entry - [last]
 */
 const useCase3 = new Syntaxe();
@@ -300,7 +326,7 @@ const users = await response.json();
 Object schema
 1. Extract the specified properties of each object in the array (id and login)
 2. Return objects with id less than 5 - [lt:5]
-3. For each object, rename 'login' as 'secureId' - [as:"secureId"]
+3. For each object, rename 'login' to 'secureId' - [as:"secureId"]
 */
 const useCase4 = new Syntaxe();
 useCase4.data(users);
@@ -326,7 +352,7 @@ Output:
 /*
 Object schema
 1. Extract the specified property of each object in the array (id)
-2. For each object, rename 'id' as 'sn' and only return objects where sn is greater than 5 - [as:"sn"][gt:5]
+2. For each object, rename 'id' to 'sn' and only return objects where sn is greater than 5 - [as:"sn"][gt:5]
 3. Return the first 10 entries
 */
 useCase4.schema(`{
@@ -435,7 +461,12 @@ When used in conjuction with logical operator(s), the result of the mutation is 
 `[as]`
 
 </td>
-<td align="left">Substitues a property name for another (the new property name returned will be the value assigned to the 'as' operator)</td>
+<td align="left">
+  As
+  <br/>
+  <br/>
+  Substitues a property name for another (the new property name returned will be the value assigned to the 'as' operator)
+</td>
 <td align="left">
 
 ```js
@@ -457,7 +488,12 @@ new Syntaxe({
 `[news]`
 
 </td>
-<td align="left">'No Extra WhiteSpace' removes any extra whitespace in a string value or replaces it with any value provided</td>
+<td align="left">
+  No Extra White Space
+  <br/>
+  <br/>
+  Removes any extra whitespace in a string value or replaces it with any value provided
+</td>
 <td align="left">
 
 ```js
@@ -490,7 +526,12 @@ new Syntaxe({
 `[nws]`
 
 </td>
-<td align="left">'No WhiteSpace' removes any whitespace in a string or replaces it with any value provided</td>
+<td align="left">
+  No White Space
+  <br/>
+  <br/>
+  Removes any whitespace in a string or replaces it with any value provided
+</td>
 <td align="left">
 
 ```js
@@ -520,7 +561,12 @@ new Syntaxe({
 `[size]`
 
 </td>
-<td align="left">Computes and returns the size of a value as the new value (applies to Array, String and Object)</td>
+<td align="left">
+  Size
+  <br/>
+  <br/>
+  Computes and returns the size of a value as the new value (applies to Array, String and Object)
+</td>
 <td align="left">
 
 ```js
@@ -545,7 +591,12 @@ new Syntaxe({
 `[first]`
 
 </td>
-<td align="left">Returns the first entry or specified number of entries (if specified) of an Array from the top</td>
+<td align="left">
+  First
+  <br/>
+  <br/>
+  Returns the first entry or specified number of entries (if specified) of an Array from the top
+</td>
 <td align="left">
 
 ```js
@@ -578,7 +629,12 @@ new Syntaxe({
 `[last]`
 
 </td>
-<td align="left">Returns the last entry or specified number of entries (if specified) of an Array from the top</td>
+<td align="left">
+  Last
+  <br/>
+  <br/>
+  Returns the last entry or specified number of entries (if specified) of an Array from the top
+</td>
 <td align="left">
 
 ```js
@@ -612,6 +668,9 @@ new Syntaxe({
 
 </td>
 <td align="left">
+  Between
+  <br/>
+  <br/>
   Returns the entries of an Array specified by a [minimum-index, maximum-index] range.
   NOTE: If just one index is provided as such [index], the minimum index defaults to 0
 </td>
@@ -648,6 +707,9 @@ new Syntaxe({
 
 </td>
 <td align="left">
+  Distinct
+  <br/>
+  <br/>
   Returns a list of distinct values (applies to Array).
   NOTE: If a value is assigned to the 'dist' operator, it is used to filter existing objects in the array</td>
 <td align="left">
@@ -707,7 +769,12 @@ _The data queried by logical operators can be the original value data, or the mu
 `[mode]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  In
+  <br/>
+  <br/>
+  Checks if data contains provided value (applies to Array)
+</td>
 <td align="left">
 
 ```js
@@ -728,7 +795,12 @@ new Syntaxe({
 `[eq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Equal
+  <br/>
+  <br/>
+  Checks if data value equates to a provided value
+</td>
 <td align="left">
 
 ```js
@@ -749,7 +821,12 @@ new Syntaxe({
 `[eqi]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Equal (case-insensitive)
+  <br/>
+  <br/>
+  Checks if data value equates to a provided value (case-insensitive)
+</td>
 <td align="left">
 
 ```js
@@ -770,7 +847,12 @@ new Syntaxe({
 `[ne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Not Equal
+  <br/>
+  <br/>
+  Checks if data value does not equate to a provided value
+</td>
 <td align="left">
 
 ```js
@@ -791,7 +873,12 @@ new Syntaxe({
 `[nei]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Not Equal (case-insensitive)
+  <br/>
+  <br/>
+  Checks if data value does not equate to a provided value (case-insensitive)
+</td>
 <td align="left">
 
 ```js
@@ -812,7 +899,12 @@ new Syntaxe({
 `[gt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Greater Than
+  <br/>
+  <br/>
+  Checks if data value is greater than a provided value
+</td>
 <td align="left">
 
 ```js
@@ -833,7 +925,12 @@ new Syntaxe({
 `[gte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if data value is greater than or equal to a provided value
+</td>
 <td align="left">
 
 ```js
@@ -854,7 +951,12 @@ new Syntaxe({
 `[lt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Less Than
+  <br/>
+  <br/>
+  Checks if data value is lesser than a provided value
+</td>
 <td align="left">
 
 ```js
@@ -875,7 +977,12 @@ new Syntaxe({
 `[lte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Less Than or Equal
+  <br/>
+  <br/>
+  Checks if data value is lesser than or equal to a provided value
+</td>
 <td align="left">
 
 ```js
@@ -896,28 +1003,12 @@ new Syntaxe({
 `[nn]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
 <td align="left">
-
-```js
-new Syntaxe({
-  schema: `{
-    login [as:"username"]
-  }`
-});
-```
-  
+  Not Null
+  <br/>
+  <br/>
+  Checks if data value is not null
 </td>
-</tr>
-
-<!-- 11 -->
-<tr>
-<td align="left">
-  
-`[gte]`
-
-</td>
-<td align="left">Changes a property's name to another.</td>
 <td align="left">
 
 ```js
@@ -938,7 +1029,12 @@ new Syntaxe({
 `[in]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  In
+  <br/>
+  <br/>
+  Checks if data contains provided value (applies to Array)
+</td>
 <td align="left">
 
 ```js
@@ -959,7 +1055,12 @@ new Syntaxe({
 `[nin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Not In
+  <br/>
+  <br/>
+  Checks if data does not contain provided value (applies to Array)
+</td>
 <td align="left">
 
 ```js
@@ -980,7 +1081,12 @@ new Syntaxe({
 `[ini]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  In (case-insensitive)
+  <br/>
+  <br/>
+  Checks if data contains case-insensitive value (applies to Array)
+</td>
 <td align="left">
 
 ```js
@@ -1001,7 +1107,12 @@ new Syntaxe({
 `[nini]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Not In (case-insensitive)
+  <br/>
+  <br/>
+  Checks if data does not contain case-insensitive value (applies to Array)
+</td>
 <td align="left">
 
 ```js
@@ -1022,7 +1133,12 @@ new Syntaxe({
 `[regex]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Regular Expression (Equal)
+  <br/>
+  <br/>
+  Checks if a data value matches provided regular expression
+</td>
 <td align="left">
 
 ```js
@@ -1043,7 +1159,12 @@ new Syntaxe({
 `[regexne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Regular Expression (Not Equal)
+  <br/>
+  <br/>
+  Checks if a data value does not match provided regular expression
+</td>
 <td align="left">
 
 ```js
@@ -1064,7 +1185,12 @@ new Syntaxe({
 `[regexin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Regular Expression (In)
+  <br/>
+  <br/>
+  Checks if a data value matches any entry in an array of regular expressions
+</td>
 <td align="left">
 
 ```js
@@ -1085,7 +1211,12 @@ new Syntaxe({
 `[regexnin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Regular Expression (Not In)
+  <br/>
+  <br/>
+  Checks if a data value matches none of the entries in an array of regular expressions
+</td>
 <td align="left">
 
 ```js
@@ -1106,7 +1237,12 @@ new Syntaxe({
 `[seq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size Equal
+  <br/>
+  <br/>
+  Checks if the size of data value is equal to provided value
+</td>
 <td align="left">
 
 ```js
@@ -1127,7 +1263,12 @@ new Syntaxe({
 `[sne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size Not Equal
+  <br/>
+  <br/>
+  Checks if the size of data value is not equal to provided value
+</td>
 <td align="left">
 
 ```js
@@ -1148,7 +1289,12 @@ new Syntaxe({
 `[sgt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size Greater Than
+  <br/>
+  <br/>
+  Checks if the size of data value is greater than provided value
+</td>
 <td align="left">
 
 ```js
@@ -1169,7 +1315,12 @@ new Syntaxe({
 `[slt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size Less Than
+  <br/>
+  <br/>
+  Checks if the size of data value is less than provided value
+</td>
 <td align="left">
 
 ```js
@@ -1190,7 +1341,12 @@ new Syntaxe({
 `[sgte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if the size of data value is greater than or equals provided value
+</td>
 <td align="left">
 
 ```js
@@ -1211,7 +1367,12 @@ new Syntaxe({
 `[slte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size Less Than or Equal
+  <br/>
+  <br/>
+  Checks if the size of data value is less than or equals provided value
+</td>
 <td align="left">
 
 ```js
@@ -1232,7 +1393,12 @@ new Syntaxe({
 `[sin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size In
+  <br/>
+  <br/>
+  Checks if the size of data value is provided range
+</td>
 <td align="left">
 
 ```js
@@ -1253,7 +1419,12 @@ new Syntaxe({
 `[snin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Size Not In
+  <br/>
+  <br/>
+  Checks if the size of data value is not provided range
+</td>
 <td align="left">
 
 ```js
@@ -1274,7 +1445,12 @@ new Syntaxe({
 `[dteq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date Equal
+  <br/>
+  <br/>
+  Checks if date value is equal to provided date
+</td>
 <td align="left">
 
 ```js
@@ -1295,7 +1471,12 @@ new Syntaxe({
 `[dtne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date Not Equal
+  <br/>
+  <br/>
+  Checks if date value is not equal to provided date
+</td>
 <td align="left">
 
 ```js
@@ -1316,7 +1497,12 @@ new Syntaxe({
 `[dtgt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date Greater Than
+  <br/>
+  <br/>
+  Checks if date value is greater than provided date
+</td>
 <td align="left">
 
 ```js
@@ -1337,7 +1523,12 @@ new Syntaxe({
 `[dtlt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date Less Than
+  <br/>
+  <br/>
+  Checks if date value is less than provided date
+</td>
 <td align="left">
 
 ```js
@@ -1358,7 +1549,12 @@ new Syntaxe({
 `[dtgte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if date value is greater than or equal to provided date
+</td>
 <td align="left">
 
 ```js
@@ -1379,7 +1575,12 @@ new Syntaxe({
 `[dtlte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date Less Than or Equal
+  <br/>
+  <br/>
+  Checks if date value is less than or equal to provided date
+</td>
 <td align="left">
 
 ```js
@@ -1400,7 +1601,12 @@ new Syntaxe({
 `[dtin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date In
+  <br/>
+  <br/>
+  Checks if date value is in provided date range
+</td>
 <td align="left">
 
 ```js
@@ -1421,7 +1627,12 @@ new Syntaxe({
 `[dtnin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date Not In
+  <br/>
+  <br/>
+  Checks if date value is not in provided date range
+</td>
 <td align="left">
 
 ```js
@@ -1442,7 +1653,12 @@ new Syntaxe({
 `[dtmeq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time Equal
+  <br/>
+  <br/>
+  Checks if datetime value is equal to provided datetime
+</td>
 <td align="left">
 
 ```js
@@ -1463,7 +1679,12 @@ new Syntaxe({
 `[dtmne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time Not Equal
+  <br/>
+  <br/>
+  Checks if datetime value is not equal to provided datetime
+</td>
 <td align="left">
 
 ```js
@@ -1484,7 +1705,12 @@ new Syntaxe({
 `[dtmgt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time Greater Than
+  <br/>
+  <br/>
+  Checks if datetime value is greater than provided datetime
+</td>
 <td align="left">
 
 ```js
@@ -1505,7 +1731,12 @@ new Syntaxe({
 `[dtmlt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time Less Than
+  <br/>
+  <br/>
+  Checks if datetime value is less than provided datetime
+</td>
 <td align="left">
 
 ```js
@@ -1526,7 +1757,12 @@ new Syntaxe({
 `[dtmgte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if datetime value is greater than or equal to provided datetime
+</td>
 <td align="left">
 
 ```js
@@ -1547,7 +1783,12 @@ new Syntaxe({
 `[dtmlte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time Less Than or Equal
+  <br/>
+  <br/>
+  Checks if datetime value is less than or equal to provided datetime
+</td>
 <td align="left">
 
 ```js
@@ -1568,7 +1809,12 @@ new Syntaxe({
 `[dtmin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time In
+  <br/>
+  <br/>
+  Checks if datetime value is in provided datetime range
+</td>
 <td align="left">
 
 ```js
@@ -1589,7 +1835,12 @@ new Syntaxe({
 `[dtmnin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Date/Time Not In
+  <br/>
+  <br/>
+  Checks if datetime value is not in provided datetime range
+</td>
 <td align="left">
 
 ```js
@@ -1610,7 +1861,12 @@ new Syntaxe({
 `[yeq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year Equal
+  <br/>
+  <br/>
+  Checks if year value is equal to provided year
+</td>
 <td align="left">
 
 ```js
@@ -1631,7 +1887,12 @@ new Syntaxe({
 `[yne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year Not Equal
+  <br/>
+  <br/>
+  Checks if year value is not equal to provided year
+</td>
 <td align="left">
 
 ```js
@@ -1652,7 +1913,12 @@ new Syntaxe({
 `[ygt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year Greater Than
+  <br/>
+  <br/>
+  Checks if year value is greater than provided year
+</td>
 <td align="left">
 
 ```js
@@ -1673,7 +1939,12 @@ new Syntaxe({
 `[ylt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year Less Than
+  <br/>
+  <br/>
+  Checks if year value is less than provided year
+</td>
 <td align="left">
 
 ```js
@@ -1694,7 +1965,12 @@ new Syntaxe({
 `[ygte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if year value is greater than or equal to provided year
+</td>
 <td align="left">
 
 ```js
@@ -1715,7 +1991,12 @@ new Syntaxe({
 `[ylte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year Less Than or Equal
+  <br/>
+  <br/>
+  Checks if year value is less than or equal to provided year
+</td>
 <td align="left">
 
 ```js
@@ -1736,7 +2017,12 @@ new Syntaxe({
 `[yin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year In
+  <br/>
+  <br/>
+  Checks if year value is in provided year range
+</td>
 <td align="left">
 
 ```js
@@ -1757,7 +2043,12 @@ new Syntaxe({
 `[ynin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Year Not In
+  <br/>
+  <br/>
+  Checks if year value is not in provided year range
+</td>
 <td align="left">
 
 ```js
@@ -1778,7 +2069,12 @@ new Syntaxe({
 `[meq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month Equal
+  <br/>
+  <br/>
+  Checks if month value is equal to provided month
+</td>
 <td align="left">
 
 ```js
@@ -1799,7 +2095,12 @@ new Syntaxe({
 `[mne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month Not Equal
+  <br/>
+  <br/>
+  Checks if month value is not equal to provided month
+</td>
 <td align="left">
 
 ```js
@@ -1820,7 +2121,12 @@ new Syntaxe({
 `[mgt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month Greater Than
+  <br/>
+  <br/>
+  Checks if month value is greater than provided month
+</td>
 <td align="left">
 
 ```js
@@ -1841,7 +2147,12 @@ new Syntaxe({
 `[mlt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month Less Than
+  <br/>
+  <br/>
+  Checks if month value is less than provided month
+</td>
 <td align="left">
 
 ```js
@@ -1862,7 +2173,12 @@ new Syntaxe({
 `[mgte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if month value is greater than or equal to provided month
+</td>
 <td align="left">
 
 ```js
@@ -1883,7 +2199,12 @@ new Syntaxe({
 `[mlte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month Less Than or Equal
+  <br/>
+  <br/>
+  Checks if month value is less than or equal to provided month
+</td>
 <td align="left">
 
 ```js
@@ -1904,7 +2225,12 @@ new Syntaxe({
 `[min]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month In
+  <br/>
+  <br/>
+  Checks if month value is in provided month range
+</td>
 <td align="left">
 
 ```js
@@ -1925,7 +2251,12 @@ new Syntaxe({
 `[mnin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Month Not In
+  <br/>
+  <br/>
+  Checks if month value is not in provided month range
+</td>
 <td align="left">
 
 ```js
@@ -1946,7 +2277,12 @@ new Syntaxe({
 `[today]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Today
+  <br/>
+  <br/>
+  Checks if date value is today
+</td>
 <td align="left">
 
 ```js
@@ -1967,7 +2303,12 @@ new Syntaxe({
 `[deq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day Equal
+  <br/>
+  <br/>
+  Checks if day value is equal to provided day
+</td>
 <td align="left">
 
 ```js
@@ -1988,7 +2329,12 @@ new Syntaxe({
 `[dne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day Not Equal
+  <br/>
+  <br/>
+  Checks if day value is not equal to provided day
+</td>
 <td align="left">
 
 ```js
@@ -2009,7 +2355,12 @@ new Syntaxe({
 `[dgt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day Greater Than
+  <br/>
+  <br/>
+  Checks if day value is greater than provided day
+</td>
 <td align="left">
 
 ```js
@@ -2030,7 +2381,12 @@ new Syntaxe({
 `[dlt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day Less Than
+  <br/>
+  <br/>
+  Checks if day value is less than provided day
+</td>
 <td align="left">
 
 ```js
@@ -2051,7 +2407,12 @@ new Syntaxe({
 `[dgte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if day value is greater than or equal to provided day
+</td>
 <td align="left">
 
 ```js
@@ -2072,7 +2433,12 @@ new Syntaxe({
 `[dlte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day Less Than or Equal
+  <br/>
+  <br/>
+  Checks if day value is less than or equal to provided day
+</td>
 <td align="left">
 
 ```js
@@ -2093,7 +2459,12 @@ new Syntaxe({
 `[din]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day In
+  <br/>
+  <br/>
+  Checks if day value is in provided day range
+</td>
 <td align="left">
 
 ```js
@@ -2114,7 +2485,12 @@ new Syntaxe({
 `[dnin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Day Not In
+  <br/>
+  <br/>
+  Checks if day value is not in provided day range
+</td>
 <td align="left">
 
 ```js
@@ -2135,7 +2511,12 @@ new Syntaxe({
 `[heq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Equal
+  <br/>
+  <br/>
+  Checks if hour value is equal to provided hour
+</td>
 <td align="left">
 
 ```js
@@ -2156,7 +2537,12 @@ new Syntaxe({
 `[hne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Not Equal
+  <br/>
+  <br/>
+  Checks if hour value is not equal to provided hour
+</td>
 <td align="left">
 
 ```js
@@ -2177,7 +2563,12 @@ new Syntaxe({
 `[hgt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Greater Than
+  <br/>
+  <br/>
+  Checks if hour value is greater than provided hour
+</td>
 <td align="left">
 
 ```js
@@ -2198,7 +2589,12 @@ new Syntaxe({
 `[hlt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Less Than
+  <br/>
+  <br/>
+  Checks if hour value is less than provided hour
+</td>
 <td align="left">
 
 ```js
@@ -2219,7 +2615,12 @@ new Syntaxe({
 `[hgte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if hour value is greater than or equal to provided hour
+</td>
 <td align="left">
 
 ```js
@@ -2240,7 +2641,12 @@ new Syntaxe({
 `[hlte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Less Than or Equal
+  <br/>
+  <br/>
+  Checks if hour value is less than or equal to provided hour
+</td>
 <td align="left">
 
 ```js
@@ -2261,7 +2667,12 @@ new Syntaxe({
 `[hin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour In
+  <br/>
+  <br/>
+  Checks if hour value matches any entry in hour array
+</td>
 <td align="left">
 
 ```js
@@ -2282,7 +2693,12 @@ new Syntaxe({
 `[hnin]`  
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Not In
+  <br/>
+  <br/>
+  Checks if hour value matches no entry in hour array
+</td>
 <td align="left">
 
 ```js
@@ -2303,7 +2719,12 @@ new Syntaxe({
 `[hinrange]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour In Range
+  <br/>
+  <br/>
+  Checks if hour value is in provided hour range
+</td>
 <td align="left">
 
 ```js
@@ -2324,7 +2745,12 @@ new Syntaxe({
 `[hninrange]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Hour Not In Range
+  <br/>
+  <br/>
+  Checks if hour value is not in provided hour range
+</td>
 <td align="left">
 
 ```js
@@ -2345,7 +2771,12 @@ new Syntaxe({
 `[mineq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Equal
+  <br/>
+  <br/>
+  Checks if minute value is equal to provided minute
+</td>
 <td align="left">
 
 ```js
@@ -2366,7 +2797,12 @@ new Syntaxe({
 `[minne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Not Equal
+  <br/>
+  <br/>
+  Checks if minute value is not equal to provided minute
+</td>
 <td align="left">
 
 ```js
@@ -2387,7 +2823,12 @@ new Syntaxe({
 `[mingt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Greater Than
+  <br/>
+  <br/>
+  Checks if minute value is greater than provided minute
+</td>
 <td align="left">
 
 ```js
@@ -2408,7 +2849,12 @@ new Syntaxe({
 `[minlt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Less Than
+  <br/>
+  <br/>
+  Checks if minute value is less than provided minute
+</td>
 <td align="left">
 
 ```js
@@ -2429,7 +2875,12 @@ new Syntaxe({
 `[mingte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if minute value is greater than or equal to provided minute
+</td>
 <td align="left">
 
 ```js
@@ -2450,7 +2901,12 @@ new Syntaxe({
 `[minlte]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Less Than or Equal
+  <br/>
+  <br/>
+  Checks if minute value is less than or equal to provided minute
+</td>
 <td align="left">
 
 ```js
@@ -2471,7 +2927,12 @@ new Syntaxe({
 `[minin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute In
+  <br/>
+  <br/>
+  Checks if minute value matches any entry in minute array
+</td>
 <td align="left">
 
 ```js
@@ -2492,7 +2953,12 @@ new Syntaxe({
 `[minnin]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Not In
+  <br/>
+  <br/>
+  Checks if minute value matches no entry in minute array
+</td>
 <td align="left">
 
 ```js
@@ -2513,7 +2979,12 @@ new Syntaxe({
 `[mininrange]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute In Range
+  <br/>
+  <br/>
+  Checks if minute value is in provided minute range
+</td>
 <td align="left">
 
 ```js
@@ -2534,7 +3005,12 @@ new Syntaxe({
 `[minninrange]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Minute Not In Range
+  <br/>
+  <br/>
+  Checks if minute value is not in provided minute range
+</td>
 <td align="left">
 
 ```js
@@ -2555,7 +3031,12 @@ new Syntaxe({
 `[teq]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Time Equal
+  <br/>
+  <br/>
+  Checks if time value is equal to provided time
+</td>
 <td align="left">
 
 ```js
@@ -2576,7 +3057,12 @@ new Syntaxe({
 `[tne]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Time Not Equal
+  <br/>
+  <br/>
+  Checks if time value is not equal to provided time
+</td>
 <td align="left">
 
 ```js
@@ -2597,7 +3083,12 @@ new Syntaxe({
 `[tgt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Time Greater Than
+  <br/>
+  <br/>
+  Checks if time value is greater than provided time
+</td>
 <td align="left">
 
 ```js
@@ -2618,7 +3109,12 @@ new Syntaxe({
 `[tlt]`
 
 </td>
-<td align="left">Changes a property's name to another.</td>
+<td align="left">
+  Time Less Than
+  <br/>
+  <br/>
+  Checks if time value is less than provided time
+</td>
 <td align="left">
 
 ```js
@@ -2639,7 +3135,12 @@ new Syntaxe({
 `[tin]`
 
 </td>
-<td align="left">Checks if time matches any of the provided time values in an array.</td>
+<td align="left">
+  Time In
+  <br/>
+  <br/>
+  Checks if time value matches any entry in time array
+</td>
 <td align="left">
 
 ```js
@@ -2660,7 +3161,12 @@ new Syntaxe({
 `[tnin]`
 
 </td>
-<td align="left">Checks if time does not match any of the provided time values in an array.</td>
+<td align="left">
+  Time Not In
+  <br/>
+  <br/>
+  Checks if time value matches no entry in time array
+</td>
 <td align="left">
 
 ```js
@@ -2681,7 +3187,12 @@ new Syntaxe({
 `[tinrange]`
 
 </td>
-<td align="left">Checks if time is in provided time range.</td>
+<td align="left">
+  Time In Range
+  <br/>
+  <br/>
+  Checks if time value is in provided time range
+</td>
 <td align="left">
 
 ```js
@@ -2702,7 +3213,12 @@ new Syntaxe({
 `[tninrange]`
 
 </td>
-<td align="left">Checks if time is not in provided time range.</td>
+<td align="left">
+  Time Not In Range
+  <br/>
+  <br/>
+  Checks if time value is not in provided time range
+</td>
 <td align="left">
 
 ```js
@@ -2723,7 +3239,12 @@ new Syntaxe({
 `[ago]`
 
 </td>
-<td align="left">Checks if a datetime value matches a provided lapsed time period.</td>
+<td align="left">
+  Ago
+  <br/>
+  <br/>
+  Checks if time matches provided time period
+</td>
 <td align="left">
 
 ```js
@@ -2744,7 +3265,12 @@ new Syntaxe({
 `[agoin]`
 
 </td>
-<td align="left">Checks if a datetime value falls in a given datetime range.</td>
+<td align="left">
+  Ago In
+  <br/>
+  <br/>
+  Checks if time falls in a provided time period range
+</td>
 <td align="left">
 
 ```js
