@@ -8,7 +8,7 @@ Syntaxe
 
 # Introduction
 
-_Syntaxe is a data query library inspired by mongodb and graphql._
+_Syntaxe is a data query library inspired by graphql._
 
 Syntaxe, with the help of a schema and a variety of operators, can be used to perform any number of query operations on most types of data e.g. String, Object or Array.
 
