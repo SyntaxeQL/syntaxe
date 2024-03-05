@@ -66,7 +66,7 @@ import Syntaxe from "syntaxe";
 const response = await fetch('https://api.github.com/users');
 const users = await response.json();
 /*
-The above users constant will hold an array of objects such as:
+The users constant holds an array of objects:
 [
   {
       "login": "mojombo",
