@@ -799,14 +799,18 @@ new Syntaxe({
   Equal
   <br/>
   <br/>
-  Checks if data value equates to a provided value
+  Checks if data value equates to a provided value.
 </td>
 <td align="left">
 
 ```js
 new Syntaxe({
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
   schema: `{
-    login [as:"username"]
+    id[eq:1]
   }`
 });
 ```
@@ -831,8 +835,12 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
   schema: `{
-    login [as:"username"]
+    currencies[first][eqi:"NGN"]
   }`
 });
 ```
@@ -857,8 +865,12 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
   schema: `{
-    login [as:"username"]
+    currencies[last][ne:"gbp"]
   }`
 });
 ```
@@ -883,8 +895,12 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [{
+    id: 1,
+    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
+  }],
   schema: `{
-    login [as:"username"]
+    currencies[last][nei:"GBP"]
   }`
 });
 ```
