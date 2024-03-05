@@ -805,14 +805,16 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
-  data: [{
-    id: 1,
-    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
-  }],
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
     id[eq:1]
+    currencies[first]
   }`
 });
+// [ { id: 1, currencies: 'ngn' } ]
 ```
   
 </td>
@@ -835,14 +837,15 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
-  data: [{
-    id: 1,
-    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
-  }],
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
     currencies[first][eqi:"NGN"]
   }`
 });
+// [ { currencies: 'ngn' } ]
 ```
   
 </td>
@@ -865,14 +868,15 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
-  data: [{
-    id: 1,
-    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
-  }],
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
     currencies[last][ne:"gbp"]
   }`
 });
+// [ { currencies: 'inr' }, { currencies: 'usd' } ]
 ```
   
 </td>
@@ -895,14 +899,15 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
-  data: [{
-    id: 1,
-    currencies: ["ngn", "usd", "gbp", "eur", "inr"]
-  }],
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    currencies[last][nei:"GBP"]
+    currencies[last][nei:"INR"]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
@@ -925,10 +930,16 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    id[gt:1]
+    currencies[first:2]
   }`
 });
+// [ { id: 2, currencies: 'usd' } ]
 ```
   
 </td>
@@ -951,10 +962,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    id[gte:1]
+    currencies[first:2]
   }`
 });
+/*
+[
+  { id: 1, currencies: [ 'ngn', 'usd' ] },
+  { id: 2, currencies: 'usd' }
+]
+*/
 ```
   
 </td>
@@ -977,10 +999,16 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    id[lt:2]
+    currencies[first]
   }`
 });
+// [ { id: 1, currencies: 'ngn' } ]
 ```
   
 </td>
@@ -1003,10 +1031,16 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    id[lte:1]
+    currencies[last]
   }`
 });
+// [ { id: 1, currencies: 'inr' } ]
 ```
   
 </td>
@@ -1029,10 +1063,16 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: null }
+  ],
   schema: `{
-    login [as:"username"]
+    id[lte:2]
+    currencies[nn][last]
   }`
 });
+// [ { id: 1, currencies: 'inr' } ]
 ```
   
 </td>
@@ -1049,16 +1089,26 @@ new Syntaxe({
   In
   <br/>
   <br/>
-  Checks if data contains provided value (applies to Array)
+  Checks if data intersects or contains any of the provided values (applies to Array)
 </td>
 <td align="left">
 
 ```js
 new Syntaxe({
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[in:["gbp", "usd"]]
   }`
 });
+/*
+[
+  { currencies: [ 'ngn', 'usd', 'gbp', 'eur', 'inr' ] },
+  { currencies: 'usd' }
+]
+*/
 ```
   
 </td>
@@ -1075,16 +1125,21 @@ new Syntaxe({
   Not In
   <br/>
   <br/>
-  Checks if data does not contain provided value (applies to Array)
+  Checks if data doesn't intersect and doesn't contain any of the provided values (applies to Array)
 </td>
 <td align="left">
 
 ```js
 new Syntaxe({
+  data: [
+    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[nin:["gbp"]]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
