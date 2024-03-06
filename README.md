@@ -1278,10 +1278,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[nini:["GBP"]]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
@@ -1304,10 +1315,30 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[regex:/eu/]
   }`
 });
+/*
+[
+  {
+    currencies: [
+      'ngn', 'usd', 'gbp',
+      'eur', 'inr'
+    ]
+  }
+]
+*/
 ```
   
 </td>
@@ -1330,10 +1361,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[regexne:/eu/]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
@@ -1356,10 +1398,30 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[regexin:[ /eu/, /gbp/ ]]
   }`
 });
+/*
+[
+  {
+    currencies: [
+      'ngn', 'usd', 'gbp',
+      'eur', 'inr'
+    ]
+  }
+]
+*/
 ```
   
 </td>
@@ -1382,10 +1444,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[regexnin:[ /eu/, /gbp/ ]]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
@@ -1408,10 +1481,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[seq:3]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
@@ -1434,10 +1518,30 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[sne:3]
   }`
 });
+/*
+[
+  {
+    currencies: [
+      'ngn', 'usd', 'gbp',
+      'eur', 'inr'
+    ]
+  }
+]
+*/
 ```
   
 </td>
@@ -1460,10 +1564,30 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[sgt:3]
   }`
 });
+/*
+[
+  {
+    currencies: [
+      'ngn', 'usd', 'gbp',
+      'eur', 'inr'
+    ]
+  }
+]
+*/
 ```
   
 </td>
@@ -1486,10 +1610,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[sgt:3]
   }`
 });
+// []
 ```
   
 </td>
