@@ -823,7 +823,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -855,7 +861,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -886,7 +898,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -917,7 +935,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -948,7 +972,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -980,7 +1010,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -1017,7 +1053,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -1049,7 +1091,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -1081,7 +1129,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: null }
   ],
   schema: `{
@@ -1113,7 +1167,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -1149,7 +1209,13 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, currencies: ["ngn", "usd", "gbp", "eur", "inr"] },
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
     { id: 2, currencies: "usd" }
   ],
   schema: `{
@@ -1179,10 +1245,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[ini:["EUR"]]
   }`
 });
+// [ { currencies: [ 'ngn', 'usd', 'gbp', 'eur', 'inr' ] } ]
 ```
   
 </td>
