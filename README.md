@@ -2735,10 +2735,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[ynin:[2024, 2025]]
   }`
 });
+// [ { statusDate: '2/8/2023 12:40:10' } ]
 ```
   
 </td>
@@ -2761,10 +2774,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[meq:2]
   }`
 });
+// [ { statusDate: '2/8/2023' } ]
 ```
   
 </td>
@@ -2787,10 +2813,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[mne:2]
   }`
 });
+// [ { statusDate: '6/10/2024' } ]
 ```
   
 </td>
@@ -2813,10 +2852,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[mgt:2]
   }`
 });
+// [ { statusDate: '6/10/2024' } ]
 ```
   
 </td>
@@ -2839,10 +2891,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[mlt:2]
   }`
 });
+// []
 ```
   
 </td>
@@ -2865,10 +2930,28 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[mgte:2]
   }`
 });
+/*
+[
+  { statusDate: '2/8/2023' },
+  { statusDate: '6/10/2024' }
+]
+*/
 ```
   
 </td>
@@ -2891,10 +2974,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[mlte:2]
   }`
 });
+// [ { statusDate: '2/8/2023' } ]
 ```
   
 </td>
@@ -2917,10 +3013,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[min:[1, 4]]
   }`
 });
+// [ { statusDate: '2/8/2023' } ]
 ```
   
 </td>
@@ -2943,10 +3052,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[mnin:[1, 4]]
   }`
 });
+// [ { statusDate: '6/10/2024' } ]
 ```
   
 </td>
@@ -2969,10 +3091,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[today]
   }`
 });
+// []
 ```
   
 </td>
@@ -2995,10 +3130,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[deq:8]
   }`
 });
+// [ { statusDate: '2/8/2023' } ]
 ```
   
 </td>
@@ -3021,10 +3169,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[dne:8]
   }`
 });
+// [ { statusDate: '6/10/2024' } ]
 ```
   
 </td>
@@ -3047,10 +3208,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[dgt:8]
   }`
 });
+[ { statusDate: '6/10/2024' } ]
 ```
   
 </td>
@@ -3073,10 +3247,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[dlt:8]
   }`
 });
+// []
 ```
   
 </td>
@@ -3099,10 +3286,28 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[dgte:8]
   }`
 });
+/*
+[
+  { statusDate: '2/8/2023' },
+  { statusDate: '6/10/2024' }
+]
+*/
 ```
   
 </td>
@@ -3125,10 +3330,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[dlte:8]
   }`
 });
+// [ { statusDate: '2/8/2023' } ]
 ```
   
 </td>
@@ -3151,10 +3369,28 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[din:[1, 10]]
   }`
 });
+/*
+[
+  { statusDate: '2/8/2023' },
+  { statusDate: '6/10/2024' }
+]
+*/
 ```
   
 </td>
@@ -3177,10 +3413,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[din:[1, 10]]
   }`
 });
+// []
 ```
   
 </td>
@@ -3203,10 +3452,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[heq:12]
   }`
 });
+// [ { statusDate: '2/8/2023 12:40:10' } ]
 ```
   
 </td>
@@ -3229,10 +3491,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[hne:12]
   }`
 });
+// [ { statusDate: '6/10/2024 05:23:34' } ]
 ```
   
 </td>
