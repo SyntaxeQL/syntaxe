@@ -447,6 +447,10 @@ Surgical operators cause the data to mutate and return the mutated result.
 
 When used in conjuction with logical operator(s), the result of the mutation is piped into the succeeding logical operator(s). 
 
+> [!IMPORTANT]
+> Surgical operators, however and wherever they are used, DETERMINE WHAT VALUE IS RETURNED.
+
+
 <table>
 <tr>
 <td align="left">Operator</td>
@@ -754,6 +758,19 @@ new Syntaxe({
 Logical operators do not cause the data to mutate, and they only return the data if the condition(s) created by the operator(s) is/are met.
 
 _The data queried by logical operators can be the original value data, or the mutated result of surgical operators._
+
+> [!IMPORTANT]
+> Logical operators, however and wherever they are used, DETERMINE IF THE VALUE IS RETURNED.
+>
+> The `mode` logical operator can be set to `or` | `and`, which determines the behavior of the query (how the query is processed).
+>
+> An `and` will require all logical expressions to evaluate to true for the value to be returned.
+>
+> An `or` will require at least one logical expression to evaluate to true for the value to be returned.
+>
+> 
+> NOTE: When dealing with an array of objects, the `mode` operator can be applied to the object schema itself, or to any of the properties within the object.
+
 
 <table>
 <tr>
