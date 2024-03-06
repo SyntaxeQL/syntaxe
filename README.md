@@ -1824,7 +1824,7 @@ new Syntaxe({
       id: 2,
       status: 'failed',
       statusDate: '3/8/2024'
-    },
+    }
   ],
   schema: `{
     statusDate[dteq:"${new Date(2024,2,6)}"]
@@ -1863,7 +1863,7 @@ new Syntaxe({
       id: 2,
       status: 'failed',
       statusDate: '3/8/2024'
-    },
+    }
   ],
   schema: `{
     statusDate[dtne:"${new Date(2024,2,6)}"]
@@ -1902,7 +1902,7 @@ new Syntaxe({
       id: 2,
       status: 'failed',
       statusDate: '3/8/2024'
-    },
+    }
   ],
   schema: `{
     statusDate[dtgt:"${new Date(2024,2,6)}"]
@@ -1941,7 +1941,7 @@ new Syntaxe({
       id: 2,
       status: 'failed',
       statusDate: '3/8/2024'
-    },
+    }
   ],
   schema: `{
     statusDate[dtlt:"${new Date(2024,2,6)}"]
@@ -1980,7 +1980,7 @@ new Syntaxe({
       id: 2,
       status: 'failed',
       statusDate: '3/8/2024'
-    },
+    }
   ],
   schema: `{
     statusDate[dtgte:"${new Date(2024,2,6)}"]
@@ -2024,7 +2024,7 @@ new Syntaxe({
       id: 2,
       status: 'failed',
       statusDate: '3/8/2024'
-    },
+    }
   ],
   schema: `{
     statusDate[dtlte:"${new Date(2024,2,6)}"]
@@ -2054,8 +2054,16 @@ new Syntaxe({
 ```js
 new Syntaxe({
   data: [
-    { id: 1, status: 'success', statusDate: '3/6/2024' },
-    { id: 2, status: 'failed', statusDate: '3/8/2024' },
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '3/6/2024'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '3/8/2024'
+    }
   ],
   schema: `{
     statusDate
@@ -2086,10 +2094,25 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '3/6/2024'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '3/8/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate
+    [dtnin:["${new Date(2024, 2, 4)}",
+        "${new Date(2024, 2, 7)}"]]
   }`
 });
+// [ { statusDate: '3/8/2024' } ]
 ```
   
 </td>
@@ -2112,10 +2135,24 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '3/6/2024 10:00:00'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '3/8/2024 10:00:00'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate
+    [dtmeq:"${new Date(2024, 2, 8, 10, 0, 0)}"]
   }`
 });
+// [ { statusDate: '3/8/2024 10:00:00' } ]
 ```
   
 </td>
