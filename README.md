@@ -2457,10 +2457,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[yeq:2024]
   }`
 });
+// [ { statusDate: '6/10/2024 05:23:34' } ]
 ```
   
 </td>
@@ -2483,10 +2496,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[yne:2024]
   }`
 });
+// [ { statusDate: '2/8/2023 12:40:10' } ]
 ```
   
 </td>
@@ -2509,10 +2535,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[ygt:2023]
   }`
 });
+// [ { statusDate: '6/10/2024 05:23:34' } ]
 ```
   
 </td>
@@ -2535,10 +2574,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[ylt:2024]
   }`
 });
+// [ { statusDate: '2/8/2023 12:40:10' } ]
 ```
   
 </td>
@@ -2561,10 +2613,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[ygte:2024]
   }`
 });
+// [ { statusDate: '6/10/2024 05:23:34' } ]
 ```
   
 </td>
@@ -2587,10 +2652,28 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[ylte:2024]
   }`
 });
+/*
+[
+  { statusDate: '2/8/2023 12:40:10' },
+  { statusDate: '6/10/2024 05:23:34' }
+]
+*/
 ```
   
 </td>
@@ -2613,10 +2696,23 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023 12:40:10'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024 05:23:34'
+    }
+  ],
   schema: `{
-    login [as:"username"]
+    statusDate[yin:[2024, 2025]]
   }`
 });
+// [ { statusDate: '6/10/2024 05:23:34' } ]
 ```
   
 </td>
