@@ -1813,6 +1813,8 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue = new Date(2024,2,6);
+
 new Syntaxe({
   data: [
     {
@@ -1827,7 +1829,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[dteq:"${new Date(2024,2,6)}"]
+    statusDate[dteq:"${dateValue}"]
   }`
 });
 // [ { statusDate: '3/6/2024' } ]
@@ -1852,6 +1854,8 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue = new Date(2024,2,6);
+
 new Syntaxe({
   data: [
     {
@@ -1866,7 +1870,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[dtne:"${new Date(2024,2,6)}"]
+    statusDate[dtne:"${dateValue}"]
   }`
 });
 // [ { statusDate: '3/8/2024' } ]
@@ -1891,6 +1895,8 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue = new Date(2024,2,6);
+
 new Syntaxe({
   data: [
     {
@@ -1905,7 +1911,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[dtgt:"${new Date(2024,2,6)}"]
+    statusDate[dtgt:"${dateValue}"]
   }`
 });
 // [ { statusDate: '3/8/2024' } ]
@@ -1930,6 +1936,8 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue = new Date(2024,2,6);
+
 new Syntaxe({
   data: [
     {
@@ -1944,7 +1952,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[dtlt:"${new Date(2024,2,6)}"]
+    statusDate[dtlt:"${dateValue}"]
   }`
 });
 // []
@@ -1969,6 +1977,8 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue = new Date(2024,2,6);
+
 new Syntaxe({
   data: [
     {
@@ -1983,7 +1993,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[dtgte:"${new Date(2024,2,6)}"]
+    statusDate[dtgte:"${dateValue}"]
   }`
 });
 /*
@@ -2013,6 +2023,8 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue = new Date(2024,2,6);
+
 new Syntaxe({
   data: [
     {
@@ -2027,7 +2039,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[dtlte:"${new Date(2024,2,6)}"]
+    statusDate[dtlte:"${dateValue}"]
   }`
 });
 // [ { statusDate: '3/6/2024' } ]
@@ -2052,6 +2064,9 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue1 = new Date(2024,2,4);
+const dateValue2 = new Date(2024,2,7);
+
 new Syntaxe({
   data: [
     {
@@ -2067,8 +2082,8 @@ new Syntaxe({
   ],
   schema: `{
     statusDate
-    [dtin:["${new Date(2024, 2, 4)}",
-        "${new Date(2024, 2, 7)}"]]
+    [dtin:["${dateValue1}",
+        "${dateValue2}"]]
   }`
 });
 // [ { statusDate: '3/6/2024' } ]
@@ -2093,6 +2108,9 @@ new Syntaxe({
 <td align="left">
 
 ```js
+const dateValue1 = new Date(2024,2,4);
+const dateValue2 = new Date(2024,2,7);
+
 new Syntaxe({
   data: [
     {
@@ -2108,8 +2126,8 @@ new Syntaxe({
   ],
   schema: `{
     statusDate
-    [dtnin:["${new Date(2024, 2, 4)}",
-        "${new Date(2024, 2, 7)}"]]
+    [dtnin:["${dateValue1}",
+        "${dateValue2}"]]
   }`
 });
 // [ { statusDate: '3/8/2024' } ]
