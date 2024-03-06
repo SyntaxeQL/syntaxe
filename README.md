@@ -1306,7 +1306,7 @@ new Syntaxe({
 
 </td>
 <td align="left">
-  Regular Expression (Equal)
+  Regular Expression (Match)
   <br/>
   <br/>
   Checks if a data value matches provided regular expression
@@ -1352,7 +1352,7 @@ new Syntaxe({
 
 </td>
 <td align="left">
-  Regular Expression (Not Equal)
+  Regular Expression (Doesn't match)
   <br/>
   <br/>
   Checks if a data value does not match provided regular expression
@@ -1647,10 +1647,31 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[sgte:3]
   }`
 });
+/*
+[
+  {
+    currencies: [
+      'ngn', 'usd', 'gbp',
+      'eur', 'inr'
+    ]
+  },
+  { currencies: 'usd' }
+]
+*/
 ```
   
 </td>
@@ -1673,10 +1694,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[slte:3]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
@@ -1699,10 +1731,30 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[sin:[4,5,6]]
   }`
 });
+/*
+[
+  {
+    currencies: [
+      'ngn', 'usd', 'gbp',
+      'eur', 'inr'
+    ]
+  }
+]
+*/
 ```
   
 </td>
@@ -1725,10 +1777,21 @@ new Syntaxe({
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      currencies: [
+        "ngn", "usd", "gbp",
+        "eur", "inr"
+      ]
+    },
+    { id: 2, currencies: "usd" }
+  ],
   schema: `{
-    login [as:"username"]
+    currencies[snin:[4,5,6]]
   }`
 });
+// [ { currencies: 'usd' } ]
 ```
   
 </td>
