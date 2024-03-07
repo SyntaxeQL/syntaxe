@@ -54,7 +54,7 @@ A schema can be object-like if the data contains object(s), such as `[{..},{..}]
 
 To compose a proper schema, it is essential to always enclose it within backtick symbols (`) to denote its scope.
 
-### Schema examples
+### Object schema example
 
 ```js
 import Syntaxe from "syntaxe";
@@ -90,9 +90,11 @@ Output:
   { id: 2, username: 'defunkt', type: 'User', site_admin: false }
 ]
 */
+```
 
-// OR 
+### In-line schema example
 
+```js
 /*
 In-line
 1. Extract the entries from index 2 to index 8
