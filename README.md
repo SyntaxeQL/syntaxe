@@ -44,7 +44,7 @@ console.log(result); // Output: 3
 
 ## Schema ✍🏽️
 
-### Wotsa Skee-ma-ah?
+### Whatsa Skee-ma-ah?
 
 _If your data were you, the schema would bear some resemblance to your reflection._
 
