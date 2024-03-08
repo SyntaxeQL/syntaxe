@@ -209,7 +209,6 @@ const result = await useCase1
                       .schema(`[last]`)
                       .query();
 
-console.log(result);
 // Result: 'orange'
 ```
 
