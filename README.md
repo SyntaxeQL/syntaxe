@@ -776,6 +776,7 @@ _The data queried by logical operators can be the original value data, or the mu
   <br/>
   
   Determines how a chain of operations associated with a property is evaluated.
+  <br/>
   Default: `and`
 
   <br/>
@@ -804,7 +805,7 @@ new Syntaxe({
     [yeq:2024][meq:"October"][cond:"or"]
   }`
 });
-// [ { statusDate: '6/10/2024 05:23:34' } ]
+// [ { statusDate: '6/10/2024' } ]
 ```
   
 </td>
@@ -825,6 +826,7 @@ new Syntaxe({
   <br/>
   
   Determines how properties in an object with associated operations are evaluated.
+  <br/>
   Default: `and`
 
   <br/>
