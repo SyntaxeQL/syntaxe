@@ -95,6 +95,15 @@ Output:
 ### In-line schema example
 
 ```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+const sx = new Syntaxe({
+  data: users
+});
+
 /*
 In-line
 1. Extract the entries from index 2 to index 8
@@ -196,6 +205,7 @@ const result = await useCase1
                       .data(['apple', 'banana', 'orange'])
                       .schema(`[last]`)
                       .query();
+
 console.log(result); // Output: 'orange'
 ```
 
@@ -765,9 +775,9 @@ _The data queried by logical operators can be the original value data, or the mu
   <br/>
   <br/>
   
-  Determines how a chain of operations associated with a property is evaluated. Default: `and`
+  Determines how a chain of operations associated with a property is evaluated.
+  Default: `and`
 
-  <br/>
   <br/>
 
   NOTE: Check below for more understanding of this operator.
@@ -814,9 +824,9 @@ new Syntaxe({
   <br/>
   <br/>
   
-  Determines how properties in an object with associated operations are evaluated. Default: ``
+  Determines how properties in an object with associated operations are evaluated.
+  Default: `and`
 
-  <br/>
   <br/>
 
   NOTE: Check below for more understanding of this operator.
