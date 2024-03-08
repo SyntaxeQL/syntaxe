@@ -744,7 +744,7 @@ _The data queried by logical operators can be the original value data, or the mu
 > [!IMPORTANT]
 > Logical operators, however and wherever they are used, DETERMINE IF THE VALUE IS RETURNED.
 >
-> The `mode` logical operator can be set to `or` | `and`, which determines the behavior of the query (how the query is processed).
+> The `mode` and `cond` logical operators can be set to `or` or `and`, which determines the behavior of the query (how the query is processed).
 >
 > An `and` will require all logical expressions to evaluate to true for the value to be returned.
 >
