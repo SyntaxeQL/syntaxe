@@ -751,6 +751,55 @@ _The data queried by logical operators can be the original value data, or the mu
 <td align="left">Usage</td>
 </tr>
 
+<!-- 0 -->
+<tr>
+<td align="left">
+  
+`[cond]`
+
+</td>
+<td align="left">
+  
+  CONDITION (`and`, `or`)
+  
+  <br/>
+  <br/>
+  
+  Determines how a chain of operations associated with a property is evaluated. Default: `and`
+
+  <br/>
+  <br/>
+
+  NOTE: Check below for more understanding of this operator.
+  
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate
+    [yeq:2024][meq:"October"][cond:"or"]
+  }`
+});
+// [ { statusDate: '6/10/2024 05:23:34' } ]
+```
+  
+</td>
+</tr>
+
 <!-- 1 -->
 <tr>
 <td align="left">
@@ -759,19 +808,48 @@ _The data queried by logical operators can be the original value data, or the mu
 
 </td>
 <td align="left">
-  In
+  
+  MODE (`and`, `or`)
+  
   <br/>
   <br/>
-  Checks if data contains provided value (applies to Array)
+  
+  Determines how properties in an object with associated operations are evaluated. Default: ``
+
+  <br/>
+  <br/>
+
+  NOTE: Check below for more understanding of this operator.
+  
 </td>
 <td align="left">
 
 ```js
 new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
   schema: `{
-    login [as:"username"]
-  }`
+    id[eq:1]
+    statusDate
+    [yeq:2024][meq:"October"][cond:"or"]
+  } [mode:"or"]`
 });
+/*
+[
+  { id: 1, statusDate: '2/8/2023' },
+  { id: 2, statusDate: '6/10/2024' }
+]
+*/
 ```
   
 </td>
