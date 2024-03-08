@@ -4742,3 +4742,80 @@ new Syntaxe({
 </tr>
 
 </table>
+
+## The COND operator
+
+The cond operator is valuable for chaining multiple operations (that may not always evaluate to 'true' independently) to be executed on a value or an object's property. It helps determine the logic for returning data based on the condition(s).
+
+The value for the operator can be `and` or `or`.
+
+Default is `and`.
+
+### Explanation by example
+
+```js
+// Data
+const dateInfoArray = [
+  {
+    id: 1,
+    status: 'success',
+    statusDate: '2/8/2023 12:40:10' // Wed Feb 08 2023 12:40:10 GMT+0100 (West Africa Standard Time)
+  },
+  {
+    id: 2,
+    status: 'failed',
+    statusDate: '6/10/2024 05:23:34' // Mon Jun 10 2024 05:23:34 GMT+0100 (West Africa Standard Time)
+  }
+];
+```
+```js
+/*
+Considering the default logic for [cond] is 'and', what we want to do is:
+1. Return only id and statusDate properties for each object in the array
+2. Each object is added to the resulting data ONLY IF ALL operations associated with 'statusDate' evaluate to true.
+   The year must be '2024', the month must be 'October' and the day must be the 8th.
+*/
+
+const sx = new Syntaxe({
+  data: dateInfoArray,
+  schema: `{
+    id
+    statusDate [yeq:2024] [meq:"October"] [deq:8]
+  }`
+});
+await sx.query();
+
+/*
+Output: []
+
+The result is an empty array because all three operations associated with statusDate do not evaluate to true for any of the objects in the array.
+*/
+```
+```js
+/*
+As opposed to the previous example, we will add the [cond] operator in this example and apply the 'or' logic. What we want to do is:
+1. Return only id and statusDate properties for each object in the array
+2. Each object is added to the resulting data IF AT LEAST ONE operation associated with 'statusDate' evaluates to true.
+   The year can be '2024' or the month can be 'October' or the day can the 8th.
+*/
+
+const sx = new Syntaxe({
+  data: dateInfoArray,
+  schema: `{
+    id
+    statusDate [yeq:2024] [meq:"October"] [deq:8] [cond:"or"]
+  }`
+});
+await sx.query();
+
+/*
+Output:
+[
+  { id: 1, statusDate: '2/8/2023 12:40:10' },
+  { id: 2, statusDate: '6/10/2024 05:23:34' }
+]
+
+The resulting array contains two objects because the 'statusDate' in the first object matches the [deq:8] operation,
+while the 'statusDate' in the second object matches the [yeq:2024] operation.
+*/
+```
