@@ -4832,3 +4832,29 @@ The resulting array contains two objects because the 'statusDate' in the first o
 while the 'statusDate' in the second object matches the [yeq:2024] operation.
 */
 ```
+
+## The MODE operator
+
+The mode operator is valuable for processing an object based on the combined evaluation of all operations associated with its properties. It helps determine the logic for returning data based on the operations of its properties.
+
+The value for the operator can be `and` or `or`.
+
+Default is `and`.
+
+### Explanation by example
+
+```js
+// Data
+const dateInfoArray = [
+  {
+    id: 1,
+    status: 'success',
+    statusDate: '2/8/2023 12:40:10' // Wed Feb 08 2023 12:40:10 GMT+0100 (West Africa Standard Time)
+  },
+  {
+    id: 2,
+    status: 'failed',
+    statusDate: '6/10/2024 05:23:34' // Mon Jun 10 2024 05:23:34 GMT+0100 (West Africa Standard Time)
+  }
+];
+```
