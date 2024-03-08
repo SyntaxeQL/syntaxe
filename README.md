@@ -30,13 +30,14 @@ const sx = new Syntaxe({
 });
 
 // Promise
-sx.query().then(console.log); // Output: 3
+sx.query().then((result) => {});
+// Result: 3
 
 // OR
 
 // Await
 const result = await sx.query();
-console.log(result); // Output: 3
+// Result: 3
 
 ```
 
@@ -72,6 +73,7 @@ Object schema
 2. For each object, rename 'login' to 'username' - [as:"username"] 
 3. Return the first two entries - [first:2] 
 */
+
 const olSchemaResult = await sx.query({
     schema: `{
         id
@@ -80,11 +82,11 @@ const olSchemaResult = await sx.query({
         site_admin
     }[first:2]`
 });
-console.log(olSchemaResult);
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output:
+Result:
 [
   { id: 1, username: 'mojombo', type: 'User', site_admin: false },
   { id: 2, username: 'defunkt', type: 'User', site_admin: false }
@@ -109,14 +111,15 @@ In-line
 1. Extract the entries from index 2 to index 8
 2. Return the size of the extracted data, if it is greater than 4
 */
+
 const inSchemaResult = await sx.query({
     schema: `[btw:[2,8]][size][gt:4]`
 });
-console.log(inSchemaResult);
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output: 6
+Result: 6
 */
 ```
 
@@ -206,7 +209,8 @@ const result = await useCase1
                       .schema(`[last]`)
                       .query();
 
-console.log(result); // Output: 'orange'
+console.log(result);
+// Result: 'orange'
 ```
 
 ## Examples 🎮
@@ -224,6 +228,7 @@ Object schema
 1. Extract the specified properties of each object in the array (id and login)
 2. Return the first five entries - [first:5] 
 */
+
 const useCase1 = new Syntaxe({
     data: users,
     schema: `{
@@ -231,11 +236,11 @@ const useCase1 = new Syntaxe({
         login
     }[first:5]`
 });
-console.log(await useCase1.query());
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output:
+Result:
 [
   { id: 1, login: 'mojombo' },
   { id: 2, login: 'defunkt' },
@@ -257,14 +262,16 @@ const users = await response.json();
 In-line schema
 1. Return the size of the data - [size] 
 */
+
 const useCase2 = new Syntaxe();
 useCase2.data(users);
 useCase2.schema(`[size]`);
-console.log(await useCase2.query());
+await useCase2.query();
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output: 30
+Result: 30
 */
 ```
 ### Use case 3 (Pass the data and schema when the query method is invoked)
@@ -281,6 +288,7 @@ Object schema
 2. For each object, rename 'login' to 'userId' - [as:"userId"]
 3. Return the last entry - [last]
 */
+
 const useCase3 = new Syntaxe();
 const useCase3Result = await useCase3.query({
     data: users,
@@ -288,11 +296,11 @@ const useCase3Result = await useCase3.query({
         login[as:"userId"]
     }[last]`
 });
-console.log(useCase3Result);
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output:
+Result:
 { userId: 'bmizerany' }
 */
 ```
@@ -310,6 +318,7 @@ Object schema
 2. Return objects with id less than 5 - [lt:5]
 3. For each object, rename 'login' to 'secureId' - [as:"secureId"]
 */
+
 const useCase4 = new Syntaxe();
 useCase4.data(users);
 const useCase4Result1 = await useCase4.query({
@@ -318,11 +327,11 @@ const useCase4Result1 = await useCase4.query({
         login[as:"secureId"]
     }`
 });
-console.log(useCase4Result1);
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output:
+Result:
 [
   { id: 1, secureId: 'mojombo' },
   { id: 2, secureId: 'defunkt' },
@@ -337,14 +346,16 @@ Object schema
 2. For each object, rename 'id' to 'sn' and only return objects where sn is greater than 5 - [as:"sn"][gt:5]
 3. Return the first 10 entries
 */
+
 useCase4.schema(`{
     id[as:"sn"][gt:5]
 }[first:10]`);
-console.log(await useCase4.query());
+await useCase4.query();
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output:
+Result:
 [
   { sn: 6 },  { sn: 7 },
   { sn: 17 }, { sn: 18 },
@@ -367,6 +378,7 @@ Object schema
 1. Extract the specified properties of each object in the array (id, login and type)
 2. Return objects with any type that is not equal to "user" - [nei:"user"] (case-insensitive)
 */
+
 const useCase5 = new Syntaxe();
 const useCase5Result = await useCase5
                               .data(users)
@@ -376,11 +388,11 @@ const useCase5Result = await useCase5
                                 type[nei:"user"]
                               }`)                              
                               .query();
-console.log(useCase5Result);
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output:
+Result:
 [ { id: 44, login: 'errfree', type: 'Organization' } ]
 */
 ```
@@ -398,6 +410,7 @@ Object schema
 2. Process objects where type is equal to "user" - [eqi:"user"] (case-insensitive)
 3. Return the size of the result
 */
+
 const useCase6 = new Syntaxe();
 const useCase6Result = useCase6
                         .data(users)
@@ -406,11 +419,12 @@ const useCase6Result = useCase6
                         }[size]`)
                         .query();
 
-useCase6Result.then(console.log);
+useCase6Result.then((result) => {});
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
-Output:
+Result:
 29
 */
 ```
@@ -4786,7 +4800,7 @@ const sx = new Syntaxe({
 await sx.query();
 
 /*
-Output: []
+Result: []
 
 The result is an empty array because all three operations associated with statusDate do not evaluate to true for any of the objects in the array.
 */
@@ -4809,7 +4823,7 @@ const sx = new Syntaxe({
 await sx.query();
 
 /*
-Output:
+Result:
 [
   { id: 1, statusDate: '2/8/2023 12:40:10' },
   { id: 2, statusDate: '6/10/2024 05:23:34' }
