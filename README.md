@@ -5108,7 +5108,7 @@ All month operators available are:
 9. `[minrange]` (Month In Range)
 10. `[mninrange]` (Month Not In Range)
 
-While expressions can be made with these operators using numeric representations of months such as `[me:1]` or `[mgt:6]`, their alphabetic representations can also be paired with the operators such as `[me:"January"]` or `[min:["Fer", "Mar", "November"]]`.
+While expressions can be made with these operators using numeric representations of months such as `[me:1]` or `[mgt:6]`, their alphabetic representations can also be paired with the operators such as `[me:"January"]` or `[min:["Feb", "Mar", "November"]]`.
 
 All acceptable month formats are (Numeric = Full Alphabetic = Short Alphabetic):
 
