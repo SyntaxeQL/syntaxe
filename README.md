@@ -3144,6 +3144,84 @@ new Syntaxe({
   Month In
   <br/>
   <br/>
+  Checks if month value matches any entry in provided month array 
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[min:[1, "February", "Apr"]]
+  }`
+});
+// [ { statusDate: '2/8/2023' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 59 -->
+<tr>
+<td align="left">
+  
+`[mnin]`
+
+</td>
+<td align="left">
+  Month Not In
+  <br/>
+  <br/>
+  Checks if month value matches no entry in provided month array
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[min:[1, "February", "Apr"]]
+  }`
+});
+// [ { statusDate: '6/10/2024' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 59/1 -->
+<tr>
+<td align="left">
+  
+`[minrange]`
+
+</td>
+<td align="left">
+  Month In Range
+  <br/>
+  <br/>
   Checks if month value is in provided month range
 </td>
 <td align="left">
@@ -3172,15 +3250,15 @@ new Syntaxe({
 </td>
 </tr>
 
-<!-- 59 -->
+<!-- 59/2 -->
 <tr>
 <td align="left">
   
-`[mnin]`
+`[mninrange]`
 
 </td>
 <td align="left">
-  Month Not In
+  Month Not In Range
   <br/>
   <br/>
   Checks if month value is not in provided month range
@@ -4932,4 +5010,9 @@ The resulting array contains two objects because:
 
 ## Month operators
 
-The mode operator is valuable for processing an object based on the combined evaluation of all operations associated with its properties. It helps determine the logic for returning data based on the operations of its properties.
+The month operators come in handy when trying to filter date values by their month component.
+
+All month operators available are `meq` (Month Equal), `mne` (Month Not Equal), `mgt` (Month Greater Than), `mlt` (Month Less Than), `mgte` (Month Greater Than or Equal), `mlte` (Month Less Than or Equal), `min` (Month In), `mnin` (Month Not In), `minrange` (Month In Range) and `mninrange` (Month Not In Range).
+
+While expressions can be made with these operators using numeric representations of months such as `[me:1]` or `[mgt:6]`, their alphabetic representations can also be paired with the operators such as `[me:"January"]` or `[min:["Fer", "Mar", "November"]]`.
+
