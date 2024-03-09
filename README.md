@@ -1,7 +1,7 @@
 # Syntaxe
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
-![NPM Version](https://img.shields.io/badge/npm-v1.1.1-D50100)
+![NPM Version](https://img.shields.io/badge/npm-v1.0.0-D50100)
 ![Top Language](https://img.shields.io/badge/javascript-100%25-F0DC4E)
 
 _Syntaxe is a data query library inspired by graphql._
@@ -4784,7 +4784,7 @@ const dateInfoArray = [
 ```js
 /*
 Considering the default logic for [cond] is 'and', what we want to do is:
-1. Return only id and statusDate properties for each object in the array
+1. Return only id and statusDate properties for each object in the array.
 2. Each object is added to the resulting data ONLY IF ALL operations associated with 'statusDate' evaluate to true.
    The year must be '2024', the month must be 'October' and the day must be the 8th.
 */
@@ -4807,9 +4807,9 @@ The result is an empty array because all three operations associated with status
 ```js
 /*
 As opposed to the previous example, we will add the [cond] operator in this example and apply the 'or' logic. What we want to do is:
-1. Return only id and statusDate properties for each object in the array
+1. Return only id and statusDate properties for each object in the array.
 2. Each object is added to the resulting data IF AT LEAST ONE operation associated with 'statusDate' evaluates to true.
-   The year can be '2024' or the month can be 'October' or the day can the 8th.
+   The year could be '2024' or the month could be 'October' or the day could be the 8th or not.
 */
 
 const sx = new Syntaxe({
@@ -4858,3 +4858,78 @@ const dateInfoArray = [
   }
 ];
 ```
+```js
+/*
+Considering the default logic for [mode] is 'and', what we want to do is:
+1. Return id, status and statusDate properties for each object in the array.
+2. Each object is added to the resulting data ONLY IF ALL operations associated with 'id', 'status' and 'statusDate' evaluate to true.
+   - The id must be '2'.
+   - The status must be 'SUCCESS' (regardless of case).
+   - The statusDate must have a year of '2024', the month must be 'April' and the day must be the 8th.
+   All properties with operations must have their chain of operations evaluate to true.
+*/
+
+const sx = new Syntaxe({
+  data: dateInfoArray,
+  schema: `{
+    id [eq:2]
+    status [eqi:"SUCCESS"]
+    statusDate [yeq:2024] [meq:"April"] [deq:8] [cond:"or"]
+  }`
+});
+await sx.query();
+
+/*
+Result: []
+
+The result is an empty array because all operations associated with id, status and statusDate do not evaluate to true for any of the objects in the array.
+*/
+```
+```js
+/*
+By injecting [mode] into the query with a logic of 'or', what we want to do is:
+1. Return id, status and statusDate properties for each object in the array.
+2. Each object is added to the resulting data IF AT LEAST ONE of the properties has its operations evaluate to true.
+   - The id could be '2' or not.
+   - The status could be 'SUCCESS' or not.
+   - The statusDate could have a year of '2024', a month of 'April' and the day could be 8th or not.
+   But at least one of the these conditions above must evaluate to true for the object to be added to the resulting data.
+*/
+
+const sx = new Syntaxe({
+  data: dateInfoArray,
+  schema: `{
+    id [eq:2]
+    status [eqi:"SUCCESS"]
+    statusDate [yeq:2024] [meq:"April"] [deq:8] [cond:"or"]
+  } [mode:"or"]`
+});
+await sx.query();
+
+/*
+Result:
+[
+  { id: 1, status: 'success', statusDate: '2/8/2023 12:40:10' },
+  { id: 2, status: 'failed', statusDate: '6/10/2024 05:23:34' }
+]
+
+The resulting array contains two objects because:
+- The first object has an 'id' that doesn't match the operation expressed as [eq:2],
+  its 'status' matches the case-insenstive operation expressed as [eqi:"SUCCESS"].
+  Seeing as the 'statusDate' applies the [cond] operator with the 'or' logic,
+  its value doesn't match the year of '2024' expressed as [yeq:2024],
+  doesn't match the month 'April' expressed as [meq:"April"],
+  but matches the day expressed as [deq:8].
+  While 'id' evaluates to false, status and statusDate both evaluate to true.
+- The second object has an 'id' that matches the operation expressed as [eq:2],
+  its 'status' doesn't match the case-insenstive operation expressed as [eqi:"SUCCESS"].
+  Its 'statusDate' matches the year '2024' expressed as [yeq:2024],
+  doesn't match the month 'April' expressed as [meq:"April"],
+  and doesn't match the day expressed as [deq:10].
+  While its 'id' evaluates to true, its status evaluates to false while its statusDate evaluates to true.
+*/
+```
+
+## Month operators
+
+The mode operator is valuable for processing an object based on the combined evaluation of all operations associated with its properties. It helps determine the logic for returning data based on the operations of its properties.
