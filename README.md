@@ -5027,18 +5027,18 @@ All month operators available are:
 
 While expressions can be made with these operators using numeric representations of months such as `[me:1]` or `[mgt:6]`, their alphabetic representations can also be paired with the operators such as `[me:"January"]` or `[min:["Fer", "Mar", "November"]]`.
 
-All acceptable month formats are (Numeric | Full Alphabetic | Short Alphabetic):
+All acceptable month formats are (Numeric = Full Alphabetic = Short Alphabetic):
 
-1. 1 | January | Jan
-2. 2 | February | Feb
-3. 3 | March | Mar
-4. 4 | April | Apr
-5. 5 | May | May
-6. 6 | June | Jun
-7. 7 | July | Jul
-8. 8 | August | Aug
-9. 9 | September | Sep
-10. 10 | October | Oct
-11. 11 | November | Nov
-12. 12 | December | Dec
+1. 1 = January = Jan
+2. 2 = February = Feb
+3. 3 = March = Mar
+4. 4 = April = Apr
+5. 5 = May = May
+6. 6 = June = Jun
+7. 7 = July = Jul
+8. 8 = August = Aug
+9. 9 = September = Sep
+10. 10 = October = Oct
+11. 11 = November = Nov
+12. 12 = December = Dec
 
