@@ -5012,7 +5012,33 @@ The resulting array contains two objects because:
 
 The month operators come in handy when trying to filter date values by their month component.
 
-All month operators available are `meq` (Month Equal), `mne` (Month Not Equal), `mgt` (Month Greater Than), `mlt` (Month Less Than), `mgte` (Month Greater Than or Equal), `mlte` (Month Less Than or Equal), `min` (Month In), `mnin` (Month Not In), `minrange` (Month In Range) and `mninrange` (Month Not In Range).
+All month operators available are:
+
+1. `[meq]` (Month Equal)
+2. `[mne]` (Month Not Equal)
+3. `[mgt]` (Month Greater Than)
+4. `[mlt]` (Month Less Than)
+5. `[mgte]` (Month Greater Than or Equal)
+6. `[mlte]` (Month Less Than or Equal)
+7. `[min]` (Month In)
+8. `[mnin]` (Month Not In)
+9. `[minrange]` (Month In Range)
+10. `[mninrange]` (Month Not In Range)
 
 While expressions can be made with these operators using numeric representations of months such as `[me:1]` or `[mgt:6]`, their alphabetic representations can also be paired with the operators such as `[me:"January"]` or `[min:["Fer", "Mar", "November"]]`.
+
+All acceptable month formats are (Numeric | Full Alphabetic | Short Alphabetic):
+
+1. 1 | January | Jan
+2. 2 | February | Feb
+3. 3 | March | Mar
+4. 4 | April | Apr
+5. 5 | May | May
+6. 6 | June | Jun
+7. 7 | July | Jul
+8. 8 | August | Aug
+9. 9 | September | Sep
+10. 10 | October | Oct
+11. 11 | November | Nov
+12. 12 | December | Dec
 
