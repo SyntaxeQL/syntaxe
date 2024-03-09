@@ -3578,7 +3578,7 @@ new Syntaxe({
   Day In
   <br/>
   <br/>
-  Checks if day value is in provided day range
+  Checks if day value matches any entry in provided day array
 </td>
 <td align="left">
 
@@ -3597,7 +3597,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[din:[1, 10]]
+    statusDate[din:[3, 6, 8, 10]]
   }`
 });
 /*
@@ -3622,6 +3622,89 @@ new Syntaxe({
   Day Not In
   <br/>
   <br/>
+  Checks if day value matches no entry in provided day array
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dnin:[3, 6, 8, 10]]
+  }`
+});
+// []
+```
+  
+</td>
+</tr>
+
+<!-- 68/1 -->
+<tr>
+<td align="left">
+  
+`[dinrange]`
+
+</td>
+<td align="left">
+  Day In Range
+  <br/>
+  <br/>
+  Checks if day value is in provided day range
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dinrange:[1, 10]]
+  }`
+});
+/*
+[
+  { statusDate: '2/8/2023' },
+  { statusDate: '6/10/2024' }
+]
+*/
+```
+  
+</td>
+</tr>
+
+<!-- 68/2 -->
+<tr>
+<td align="left">
+  
+`[dninrange]`
+
+</td>
+<td align="left">
+  Day Not In Range
+  <br/>
+  <br/>
   Checks if day value is not in provided day range
 </td>
 <td align="left">
@@ -3641,7 +3724,7 @@ new Syntaxe({
     }
   ],
   schema: `{
-    statusDate[din:[1, 10]]
+    statusDate[dninrange:[1, 10]]
   }`
 });
 // []
