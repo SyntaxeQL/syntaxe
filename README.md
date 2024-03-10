@@ -5521,3 +5521,29 @@ All acceptable month formats are (Numeric = Full Alphabetic = Short Alphabetic):
 11. 11 = November = Nov
 12. 12 = December = Dec
 
+## Day of week operators
+
+Day of week operators are useful for filtering date values based on what day of the week their day component corresponds to.
+
+All day of week operators available are:
+
+1. `[dweq]` (Day of Week Equal)
+2. `[dwne]` (Day of Week Equal)
+3. `[dwgt]` (Day of Week Greater Than)
+4. `[dwlt]` (Day of Week Less Than)
+5. `[dwgte]` (Day of Week Greater Than or Equal)
+6. `[dwlte]` (Day of Week Less Than or Equal)
+7. `[dwin]` (Day of Week In)
+8. `[dwnin]` (Day of Week Not In)
+9. `[dwinrange]` (Day of Week In Range)
+10. `[dwninrange]` (Day of Week Not In Range)
+
+All acceptable day of week formats are (Numeric = Full Alphabetic = Short Alphabetic):
+
+1. 1 = Sunday = Sun
+2. 2 = Monday = Mon
+3. 3 = Tuesday = Mar
+4. 4 = Wednesday = Wed
+5. 5 = Thursday = Thur | Thu
+6. 6 = Friday = Fri
+7. 7 = Saturday = Sat
