@@ -235,6 +235,7 @@ const useCase1 = new Syntaxe({
         login
     }[first:5]`
 });
+await useCase1.query();
 
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
@@ -292,7 +293,7 @@ const useCase3 = new Syntaxe();
 const useCase3Result = await useCase3.query({
     data: users,
     schema: `{
-        login[as:"userId"]
+      login[as:"userId"]
     }[last]`
 });
 
@@ -322,8 +323,8 @@ const useCase4 = new Syntaxe();
 useCase4.data(users);
 const useCase4Result1 = await useCase4.query({
     schema: `{
-        id[lt:5]
-        login[as:"secureId"]
+      id[lt:5]
+      login[as:"secureId"]
     }`
 });
 
@@ -347,7 +348,7 @@ Object schema
 */
 
 useCase4.schema(`{
-    id[as:"sn"][gt:5]
+  id[as:"sn"][gt:5]
 }[first:10]`);
 await useCase4.query();
 
@@ -414,7 +415,7 @@ const useCase6 = new Syntaxe();
 const useCase6Result = useCase6
                         .data(users)
                         .schema(`{
-                            type[eqi:"user"]
+                          type[eqi:"user"]
                         }[size]`)
                         .query();
 
