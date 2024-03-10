@@ -76,10 +76,10 @@ Object schema
 
 const olSchemaResult = await sx.query({
     schema: `{
-        id
-        login[as:"username"]
-        type
-        site_admin
+      id
+      login[as:"username"]
+      type
+      site_admin
     }[first:2]`
 });
 
