@@ -3733,6 +3733,401 @@ new Syntaxe({
 </td>
 </tr>
 
+<!-- 68/3 -->
+<tr>
+<td align="left">
+  
+`[dweq]`
+
+</td>
+<td align="left">
+  Day of Week Equal
+  <br/>
+  <br/>
+  Checks if day is equal to provided day of week
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dweq:"Monday"]
+  }`
+});
+// [ { statusDate: '6/10/2024' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 68/4 -->
+<tr>
+<td align="left">
+  
+`[dwne]`
+
+</td>
+<td align="left">
+  Day of Week Not Equal
+  <br/>
+  <br/>
+  Checks if day is not equal to provided day of week
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwne:"Monday"]
+  }`
+});
+// [ { statusDate: '2/8/2023' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 68/5 -->
+<tr>
+<td align="left">
+  
+`[dwgt]`
+
+</td>
+<td align="left">
+  Day of Week Greater Than
+  <br/>
+  <br/>
+  Checks if date's day is greater than provided day of week
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwgt:"Monday"]
+  }`
+});
+// [ { statusDate: '2/8/2023' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 68/6 -->
+<tr>
+<td align="left">
+  
+`[dwlt]`
+
+</td>
+<td align="left">
+  Day of Week Less Than
+  <br/>
+  <br/>
+  Checks if date's day is less than provided day of week
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwlt:"Monday"]
+  }`
+});
+// []
+```
+  
+</td>
+</tr>
+
+<!-- 68/6 -->
+<tr>
+<td align="left">
+  
+`[dwgte]`
+
+</td>
+<td align="left">
+  Day of Week Greater Than or Equal
+  <br/>
+  <br/>
+  Checks if date's day is greater than or equal to provided day of week
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwgte:"Monday"]
+  }`
+});
+/*
+[
+  { statusDate: '2/8/2023' },
+  { statusDate: '6/10/2024' }
+]
+*/
+```
+  
+</td>
+</tr>
+
+<!-- 68/7 -->
+<tr>
+<td align="left">
+  
+`[dwlte]`
+
+</td>
+<td align="left">
+  Day of Week Less Than or Equal
+  <br/>
+  <br/>
+  Checks if date's day is less than or equal to provided day of week
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwlte:"Monday"]
+  }`
+});
+// [ { statusDate: '6/10/2024' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 68/8 -->
+<tr>
+<td align="left">
+  
+`[dwin]`
+
+</td>
+<td align="left">
+  Day of Week In
+  <br/>
+  <br/>
+  Checks if date's day matches any entry in provided day of week array 
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwin:["Mon", "Tue", "Fri"]]
+  }`
+});
+// [ { statusDate: '6/10/2024' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 68/9 -->
+<tr>
+<td align="left">
+  
+`[dwnin]`
+
+</td>
+<td align="left">
+  Day of Week Not In
+  <br/>
+  <br/>
+  Checks if date's day matches no entry in provided day of week array
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwnin:["Mon", "Tue", "Fri"]]
+  }`
+});
+// [ { statusDate: '2/8/2023' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 68/10 -->
+<tr>
+<td align="left">
+  
+`[dwinrange]`
+
+</td>
+<td align="left">
+  Day of Week In Range
+  <br/>
+  <br/>
+  Checks if date's day is in provided day of week range
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwinrange:["Tue", "Fri"]]
+  }`
+});
+// [ { statusDate: '2/8/2023' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 68/11 -->
+<tr>
+<td align="left">
+  
+`[dwninrange]`
+
+</td>
+<td align="left">
+  Day of Week Not In Range
+  <br/>
+  <br/>
+  Checks if date's day is not in provided day of week range
+</td>
+<td align="left">
+
+```js
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '2/8/2023'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '6/10/2024'
+    }
+  ],
+  schema: `{
+    statusDate[dwninrange:["Tue", "Fri"]]
+  }`
+});
+// [ { statusDate: '6/10/2024' } ]
+```
+  
+</td>
+</tr>
+
 <!-- 69 -->
 <tr>
 <td align="left">
