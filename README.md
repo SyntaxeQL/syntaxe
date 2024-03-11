@@ -38,7 +38,7 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
   - [The COND operator](#the-cond-operator)
     - [Explanation by example](#explanation-by-example)
   - [The MODE operator](#the-mode-operator)
-    - [Explanation by example](#explanation-by-example-)
+    - [Explanation by example](#explanation-by-example-mode)
 - [Support and Feedback](#support-and-feedback)
 - [License](#license)
 
