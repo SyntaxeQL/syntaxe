@@ -5547,3 +5547,75 @@ All acceptable day of week formats are (Numeric = Full Alphabetic = Short Alphab
 5. 5 = Thursday = Thur | Thu
 6. 6 = Friday = Fri
 7. 7 = Saturday = Sat
+
+## Time operators
+
+When performing time-based query operations, you can match 12-hour time formats to 24-hour time formats and vice versa.
+
+When you provide a 12-hour time value to match a 24-hour time value, you'll also have to specify the period e.g. `am` or `pm`.
+
+```js
+// Data
+const dateInfoArray = [
+  {
+    id: 1,
+    status: 'success',
+    statusDate: '2/8/2023 12:30:00' // Wed Feb 08 2023 12:40:10 GMT+0100 (West Africa Standard Time)
+  },
+  {
+    id: 2,
+    status: 'failed',
+    statusDate: '6/10/2024 17:23:34' // Mon Jun 10 2024 05:23:34 GMT+0100 (West Africa Standard Time)
+  },
+  {
+    id: 3,
+    status: 'pending',
+    statusDate: '8/7/2024 03:20:22 pm' // Wed Aug 07 2024 15:20:22 GMT+0100 (West Africa Standard Time)
+  }
+];
+```
+```js
+/*
+Match a 12-hour time value to 24-hour time values
+*/
+
+const sx = new Syntaxe({
+  data: dateInfoArray,
+  schema: `{
+    statusDate [teq:"05:23:34 pm"]
+  }`
+});
+await sx.query();
+
+/*
+Result: [ { statusDate: '6/10/2024 17:23:34' } ]
+*/
+```
+```js
+/*
+Match a 24-hour time value to 12-hour time values
+*/
+
+sx.schema(`{
+  statusDate [teq:"15:20:22"]
+}`);
+await sx.query();
+
+/*
+Result: [ { statusDate: '8/7/2024 03:20:22 pm' } ]
+*/
+```
+```js
+/*
+Return any object with a 'statusDate' time value that is greater than '15:20:22'
+*/
+
+sx.schema(`{
+  statusDate [tgt:"15:20:22"]
+}`);
+await sx.query();
+
+/*
+Result: [ { statusDate: '6/10/2024 17:23:34' } ]
+*/
+```
