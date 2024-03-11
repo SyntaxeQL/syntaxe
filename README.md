@@ -26,6 +26,11 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
     - [Method chaining](#method-chaining)
   - [Examples 🎮](#examples-)
     - [Use case 1 (Pass data and schema to the constructor)](#use-case-1-pass-data-and-schema-to-the-constructor)
+    - [Use case 2 (Invoke the data and schema methods separately)](#use-case-2-Invoke-the-data-and-schema-methods-separately)
+    - [Use case 3 (Pass the data and schema when the query method is invoked)](#use-case-3-Pass-the-data-and-schema-when-the-query-method-is-invoked)
+    - [Use case 4 (Invoke the data method, pass the schema when query method is invoked, and invoke the schema method)](#use-case-4-Invoke-the-data-method-pass-the-schema-when-query-method-is-invoked-and-invoke-the-schema-method)
+    - [Use case 5 (Invoke both data and schema methods by chaining them to perform a query)](#use-case-5-Invoke-both-data-and-schema-methods-by-chaining-them-to-perform-a-query)
+    - [Use case 6 (Using the .then() Promise method)](#use-case-6-using-the-then-promise-method)
 - [Support and Feedback](#support-and-feedback)
 - [License](#license)
 
