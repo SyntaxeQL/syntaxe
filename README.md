@@ -16,6 +16,9 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
   - [Setup 💾](#setup-)
 - [Example](#example)
   - [A basic example](#a-basic-example)
+- [Usage](#usage)
+  - [Schema ✍🏽️](#schema-)
+    - [Whatsa Skee-ma-ah?](#whatsa-skee-ma-ah?)
 - [Support and Feedback](#support-and-feedback)
 - [License](#license)
 
