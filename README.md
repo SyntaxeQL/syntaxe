@@ -17,7 +17,7 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
 - [Example](#example)
   - [A basic example](#a-basic-example)
 - [Usage](#usage)
-  - [Schema️ ✍🏽️](#schema-%EF%B8%8F-)
+  - [Schema️ ✍🏽️](#schema-%EF%B8%8F)
     - [Whatsa Skee-ma-ah?](#whatsa-skee-ma-ah)
     - [Object schema example](#object-schema-example)
     - [In-line schema example](#in-line-schema-example)
