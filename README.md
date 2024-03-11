@@ -5356,7 +5356,7 @@ The value for the operator can be `and` or `or`.
 
 Default is `and`.
 
-### Explanation by example
+### COND explanation by example
 
 ```js
 // Data
@@ -5433,7 +5433,7 @@ The value for the operator can be `and` or `or`.
 
 Default is `and`.
 
-### Explanation by example
+### MODE explanation by example
 
 ```js
 // Data
