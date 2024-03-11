@@ -5575,9 +5575,7 @@ const dateInfoArray = [
 ];
 ```
 ```js
-/*
-Match a 12-hour time value to 24-hour time values
-*/
+// Match a 12-hour time value to 24-hour time values
 
 const sx = new Syntaxe({
   data: dateInfoArray,
@@ -5587,28 +5585,20 @@ const sx = new Syntaxe({
 });
 await sx.query();
 
-/*
-Result: [ { statusDate: '6/10/2024 17:23:34' } ]
-*/
+// Result: [ { statusDate: '6/10/2024 17:23:34' } ]
 ```
 ```js
-/*
-Match a 24-hour time value to 12-hour time values
-*/
+// Match a 24-hour time value to 12-hour time values
 
 sx.schema(`{
   statusDate [teq:"15:20:22"]
 }`);
 await sx.query();
 
-/*
-Result: [ { statusDate: '8/7/2024 03:20:22 pm' } ]
-*/
+// Result: [ { statusDate: '8/7/2024 03:20:22 pm' } ]
 ```
 ```js
-/*
-Return any object with a 'statusDate' time value that is greater than '15:20:22'
-*/
+// Return any object with a 'statusDate' time value that is greater than '15:20:22'
 
 await sx.query({
   schema: `{
@@ -5616,7 +5606,5 @@ await sx.query({
   }`
 });
 
-/*
-Result: [ { statusDate: '6/10/2024 17:23:34' } ]
-*/
+// Result: [ { statusDate: '6/10/2024 17:23:34' } ]
 ```
