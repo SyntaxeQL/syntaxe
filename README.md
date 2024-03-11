@@ -8,8 +8,6 @@ _Syntaxe is a data query library inspired by graphql._
 
 Syntaxe, with the help of a schema and a variety of operators, can be used to perform any number of query operations on most types of data e.g. String, Object or Array.
 
-<br/>
-
 # Table of Contents
 
 - [Installation](#installation)
@@ -36,9 +34,13 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
   - [Surgical Operators 💉](#surgical-operators-)
   - [Logical Operators 🧠](#logical-operators-)
   - [The COND operator](#the-cond-operator)
-    - [Explanation by example](#explanation-by-example)
+    - [COND explanation by example](#cond-explanation-by-example)
   - [The MODE operator](#the-mode-operator)
-    - [Explanation by example](#explanation-by-example-mode)
+    - [MODE explanation by example](#mode-explanation-by-example)
+  - [Month operators](#month-operators)
+  - [Day of week operators](#day-of-week-operators)
+  - [Time operators](#time-operators)
+  - [Ago operators](#ago-operators)
 - [Support and Feedback](#support-and-feedback)
 - [License](#license)
 
