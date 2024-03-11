@@ -5638,7 +5638,7 @@ If you have any issues using the library, please contact me by email [lolu.shola
 
 You are welcome to contribute or participate in making the library better.
 
-_NOTE: Development of this library in various technologies, including PHP, C#, Java, Python, and others, is currently underway to support both standalone usage and REST API usage._
+_NOTE: Development of this library in various technologies, including PHP, C#, Java, Python, and others, is currently underway, with support for standalone usage and REST API usage._
 
 # License
 
