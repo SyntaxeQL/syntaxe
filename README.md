@@ -25,7 +25,7 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
     - [Instance methods](#instance-methods)
     - [Method chaining](#method-chaining)
   - [Examples 🎮](#examples----)
-    - [Use case 1 (Pass data and schema to the constructor)](#use-case-1-(Pass-data-and-schema-to-the-constructor))
+    - [Use case 1 (Pass data and schema to the constructor)](#use-case-1-pass-data-and-schema-to-the-constructor)
 - [Support and Feedback](#support-and-feedback)
 - [License](#license)
 
