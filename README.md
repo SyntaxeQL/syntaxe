@@ -13,7 +13,7 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
 # Table of Contents
 
 - [Installation](#installation)
-  - [Setup](#setup-💾)
+  - [Setup](#setup💾)
 - [Example](#example)
   - [A basic example](#a-basic-example)
 - [Support and Feedback](#support-and-feedback)
