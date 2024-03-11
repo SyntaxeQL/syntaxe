@@ -5550,7 +5550,7 @@ All acceptable day of week formats are (Numeric = Full Alphabetic = Short Alphab
 
 ## Time operators
 
-When performing time-based query operations, you can match 12-hour time formats to 24-hour time formats and vice versa.
+When performing time-based query operations, you can match 12-hour time format values to 24-hour time format values and vice versa.
 
 When you provide a 12-hour time value to match a 24-hour time value, you'll also have to specify the period e.g. `am` or `pm`.
 
@@ -5610,10 +5610,11 @@ Result: [ { statusDate: '8/7/2024 03:20:22 pm' } ]
 Return any object with a 'statusDate' time value that is greater than '15:20:22'
 */
 
-sx.schema(`{
-  statusDate [tgt:"15:20:22"]
-}`);
-await sx.query();
+await sx.query({
+  schema: `{
+    statusDate [tgt:"15:20:22"]
+  }`
+});
 
 /*
 Result: [ { statusDate: '6/10/2024 17:23:34' } ]
