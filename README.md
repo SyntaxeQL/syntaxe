@@ -5608,3 +5608,38 @@ await sx.query({
 
 // Result: [ { statusDate: '6/10/2024 17:23:34' } ]
 ```
+
+## Ago operators
+
+Ago operators can prove quite useful when querying data based on approximated time periods or ranges such as 2 hours ago, or a given time range such as between 2 hours and 3 days ago.
+
+An additional way to use the `[ago]` operator is with the inclusion of `+` or `-` sign.
+
+There are two ago operators:
+
+1. `[ago]` (Ago) - matches a past date/time value or period e.g. `[ago:"5 minutes"]` (occurred 5 minutes ago), `[ago:"2 days"]` (occurred 2 days ago), `[ago:"+ 3 hours"]` (occurred between now and 3 hours ago) or `[ago:"- 10 months"]` (occurred from 10 months ago and backwards)
+2. `[agoin]` (Ago In) - matches a date/time period range e.g. `[agoin:["10 months", "2 years"]]` (occurred between 10 months and 2 years ago)
+
+All acceptable date/time period formats are (Short Alphabetic = Full Alphabetic = Plural Full Alphabetic):
+
+1. se = second = seconds
+2. mi = minute = minutes
+3. hr = hour = hours
+4. dy = day = days
+5. wk = week = weeks
+6. mo = month = month
+7. yr = year = years
+
+# Support and Feedback
+
+If you find any bugs or inconsistency, please submit an issue here in GitHub.
+
+If you have any issues using the library, please contact me by email [lolu.sholar@gmail.com](mailto:lolu.sholar@gmail.com) with the subject 'Problem Using Syntaxe'.
+
+You are welcome to contribute or participate in making the library better.
+
+_NOTE: Development of this library in various technologies, including PHP, C#, Java, Python, and others, is currently underway to support both standalone usage and REST API usage._
+
+# License
+
+[The MIT License (MIT)](LICENSE)
