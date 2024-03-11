@@ -8,6 +8,16 @@ _Syntaxe is a data query library inspired by graphql._
 
 Syntaxe, with the help of a schema and a variety of operators, can be used to perform any number of query operations on most types of data e.g. String, Object or Array.
 
+<br/>
+
+# Table of Contents
+
+- [Installation](#installation)
+  - [Setup](#setup)
+- [Example](#example)
+  - [A basic example](#a-basic-example)
+- [Support and Feedback](#support-and-feedback)
+- [License](#license)
 
 # Installation
 
@@ -5638,7 +5648,7 @@ If you have any issues using the library, please contact me by email [lolu.shola
 
 You are welcome to contribute or participate in making the library better.
 
-_NOTE: Development of this library in various technologies, including PHP, C#, Java, Python, and others, is currently underway, with support for standalone usage and REST API usage._
+_NOTE: Development of this library in various technologies, including PHP, C#, Java, Python, and others, is currently underway, with support for both standalone and REST API usage._
 
 # License
 
