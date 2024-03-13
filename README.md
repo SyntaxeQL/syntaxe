@@ -520,11 +520,11 @@ new Syntaxe({
 <tr>
 <td align="left">
   
-`[news]`
+`[rew]`
 
 </td>
 <td align="left">
-  No Extra White Space
+  Remove Extra Whitespace
   <br/>
   <br/>
   Removes any extra whitespace in a string value or replaces it with any value provided
@@ -534,12 +534,12 @@ new Syntaxe({
 ```js
 // removes extra whitespace
 const schemaOne = `{
-  title [news]
+  title [rew]
 }`;
 
 // replaces extra whitespace
 const schemaTwo = `{
-  title [news:"*"]
+  title [rew:"*"]
 }`;
 
 new Syntaxe({
@@ -558,11 +558,11 @@ new Syntaxe({
 <tr>
 <td align="left">
   
-`[nws]`
+`[rw]`
 
 </td>
 <td align="left">
-  No White Space
+  Remove Whitespace
   <br/>
   <br/>
   Removes any whitespace in a string or replaces it with any value provided
@@ -572,12 +572,12 @@ new Syntaxe({
 ```js
 // removes any whitespace
 const schemaOne = `{
-  title [nws]
+  title [rw]
 }`;
 
 // replaces any whitespace
 const schemaTwo = `{
-  title [nws:"*"]
+  title [rw:"*"]
 }`;
 
 new Syntaxe({
