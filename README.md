@@ -1,4 +1,4 @@
-<img src="assets/syntaxe.png" width="200px"/>
+<img src="assets/logo.svg" width="220px"/>
 
 # Syntaxe
 
