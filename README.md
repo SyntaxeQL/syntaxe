@@ -1,7 +1,7 @@
 <img src="assets/logo.svg" width="180px"/>
 <br/>
 
-Syntaxe library for JavaScript
+Syntaxe for JavaScript
 
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
