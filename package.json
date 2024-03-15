@@ -1,0 +1,28 @@
+{
+  "name": "syntaxe",
+  "version": "1.0.0",
+  "description": "A data query library inspired by graphql",
+  "main": "src/index.js",
+  "type": "module",
+  "directories": {
+    "example": "examples",
+    "data": "data"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "nodejs",
+    "data-querying",
+    "javascript-library",
+    "overfetching",
+    "underfetching",
+    "operators",
+    "schema"
+  ],
+  "author": "Olushola Lana",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
