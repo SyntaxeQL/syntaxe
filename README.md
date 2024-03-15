@@ -1,3 +1,5 @@
+<img src="assets/syntaxe.png" width="200px"/>
+
 # Syntaxe
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
