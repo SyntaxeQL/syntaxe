@@ -7,8 +7,8 @@ Syntaxe library for JavaScript
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
 ![NPM Version](https://img.shields.io/badge/npm-v1.0.0-D50100)
 ![Top Language](https://img.shields.io/badge/javascript-100%25-F0DC4E)
-
 <br/>
+
 _Syntaxe is a data query library inspired by graphql._
 
 Syntaxe, with the help of a schema and a variety of operators, can be used to perform any number of query operations on most types of data e.g. String, Object or Array.
@@ -115,12 +115,12 @@ Object schema
 */
 
 const olSchemaResult = await sx.query({
-    schema: `{
-      id
-      login[as:"username"]
-      type
-      site_admin
-    }[first:2]`
+  schema: `{
+    id
+    login[as:"username"]
+    type
+    site_admin
+  }[first:2]`
 });
 
 /*
@@ -153,7 +153,7 @@ In-line
 */
 
 const inSchemaResult = await sx.query({
-    schema: `[btw:[2,8]][size][gt:4]`
+  schema: `[btw:[2,8]][size][gt:4]`
 });
 
 /*
@@ -269,11 +269,11 @@ Object schema
 */
 
 const useCase1 = new Syntaxe({
-    data: users,
-    schema: `{
-      id
-      login
-    }[first:5]`
+  data: users,
+  schema: `{
+    id
+    login
+  }[first:5]`
 });
 await useCase1.query();
 
@@ -331,10 +331,10 @@ Object schema
 
 const useCase3 = new Syntaxe();
 const useCase3Result = await useCase3.query({
-    data: users,
-    schema: `{
-      login[as:"userId"]
-    }[last]`
+  data: users,
+  schema: `{
+    login[as:"userId"]
+  }[last]`
 });
 
 /*
@@ -362,10 +362,10 @@ Object schema
 const useCase4 = new Syntaxe();
 useCase4.data(users);
 const useCase4Result1 = await useCase4.query({
-    schema: `{
-      id[lt:5]
-      login[as:"secureId"]
-    }`
+  schema: `{
+    id[lt:5]
+    login[as:"secureId"]
+  }`
 });
 
 /*
