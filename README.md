@@ -1,4 +1,4 @@
-<img src="assets/logo.svg" width="180px"/>
+<img src="assets/logo.svg" width="220px"/>
 <br/>
 Syntaxe for JavaScript
 
