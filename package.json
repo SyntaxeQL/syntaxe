@@ -23,6 +23,8 @@
   "author": "Olushola Lana",
   "license": "MIT",
   "devDependencies": {
+    "@babel/preset-env": "^7.24.0",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0"
   }
 }

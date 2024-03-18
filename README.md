@@ -1,6 +1,5 @@
 <img src="assets/logo.svg" width="180px"/>
 <br/>
-
 Syntaxe for JavaScript
 
 

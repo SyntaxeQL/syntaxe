@@ -1,4 +1,4 @@
-const { filterSchema, laundry } = require('./lib/engine.js');
+import { filterSchema, laundry } from './lib/engine.js';
 
 const Syntaxe = class {
 	#data; #schema;
@@ -40,4 +40,4 @@ const Syntaxe = class {
 	}
 };
 
-module.exports = Syntaxe;
+export default Syntaxe;

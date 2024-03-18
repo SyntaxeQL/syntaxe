@@ -15,7 +15,7 @@ const patterns = {
 	},
 	operations: {
 		propertyOp 			: /(((\w+)(\s*))((\s*)\[(\s*)(\w+)(\s*)(:*)(\s*)(\'([\w\+\s\(\):]*|\s{1,})\'|\"([\w\+\s\(\):]*|\s{1,})\"|(\[[\"\w\+\s\(\):\",]+\])|(\"[-\d\w\s]+\")|(\[(\s*)\/(\w+)\/(\,(\s*)\/(\w+)\/)*(\s*)\])|(\[(\s*)\"[\w\/]*\"(\,(\s*)\"[\w\/]*\")+(\s*)\](\s*))|(\w+)|((\/)(\S+)(\/)(\w*)(\s*))|(\S+))\])+)/,
-		objectOp 				: /(((\})(\s*))((\s*)\[(\w+)(\s*)(:*)(\s*)((\[[\"\w\+\s\(\):\",]+\])|\"(\w*)\"|(\w+)|((\+|\-){1}\w+))\])+)/,
+		objectOp 				: /(((\})(\s*))((\s*)\[(\w+)(\s*)(:*)(\s*)((\[[\"\w\+\s\(\):\",]+\])|\"(.+)\"|(\w+)|((\+|\-){1}\w+))\])+)/,
 	},
 	schema: {
 		commaAndSpace  	: /(,)|(\s{2,})/,
@@ -258,7 +258,9 @@ const laundry = async({ data, status, schema }) => {
 	// only work for data that can be jsonified
 	try {
 		// convert data to json
-		const subject = (typeof data == 'string') ? JSON.parse(data) : data;
+		const subject = (typeof data == 'string') 
+			? (holder.context != 'root' ? JSON.parse(data) : data) 
+			: data;
 		
 		// process the schema and subject
 		let result = (holder.context == 'json') 
@@ -1071,12 +1073,16 @@ const sweep = async({ schema, subject, mode }) => {
 					// define store
 					let objectHasOperationsStatus = false,
 							currentKeyMode = 'and',
-							currentKeyAsNewPropertyName = '';
+							currentKeyAsNewPropertyName = String(),
+							objectPropertyInfo = null;
 					
 					// check if an property is an operation for previous property key (key with object value)
 					if (holder.objectOps.has(properties[keyCounter + 1])) {
-						let objectPropertyInfo = holder.objectOps.get(properties[keyCounter + 1]),
-								prop = key;
+						let objectPropertyInfoKey = properties[keyCounter + 1],
+							prop = key;
+							
+						// extract object info
+						objectPropertyInfo = holder.objectOps.get(objectPropertyInfoKey);
 						
 						// pass new random name
 						currentKeyAsNewPropertyName = `*instr-p:id_${randomKey()}`;
@@ -1085,26 +1091,37 @@ const sweep = async({ schema, subject, mode }) => {
 
 						// check if any valid operations
 						if (objectPropertyInfo.operation.length) {
+							// check if [as] operator is set property
+							const operatorIndexAs = objectPropertyInfo.operation.findIndex(x => x.match(/^as:\".*\"$/));
+
+			    		// check 
+			    		if(operatorIndexAs >= 0) {
+			    			let operatorAsAlias = String(objectPropertyInfo.operation[operatorIndexAs]).split(':')[1];
+			    			// change key name to alias
+			    			objectPropertyInfo.currentKeyAlias = operatorAsAlias.replace(regexify(patterns.general.quotes, true, true), '');
+			    			// remove [as] operator
+			    			objectPropertyInfo.operation.splice(operatorIndexAs, 1);	
+			    			// indicate that current key holding an object has operations
+			    			objectHasOperationsStatus = (objectPropertyInfo.operation.length > 0);
+			    		} else objectHasOperationsStatus = true;
+
 			    		// pass property name and operations into holder
 			    		holder.propertyOps.set(currentKeyAsNewPropertyName, {
 			    			property: prop,
 			    			operation: objectPropertyInfo.operation,
 			    			condition: objectPropertyInfo.condition
 			    		});
-
-			    		// indicate that current key holding an object has operations
-			    		objectHasOperationsStatus = true;
 			    	}
 					}
-
+					
 					// process schema and subject for current key
-					result[key] = (await sweep({ schema: schema[key], subject: subject[key], mode: currentKeyMode })).result;
+					result[objectPropertyInfo?.currentKeyAlias || key] = (await sweep({ schema: schema[key], subject: subject[key], mode: currentKeyMode })).result;
 
 					// check if key has operations waiting in next key
 					if (objectHasOperationsStatus) {
 						// compute status
-						let operationStatus = await sweep({ schema: { [currentKeyAsNewPropertyName]: 1  }, subject: { [key]: result[key] } })
-						result[key] = operationStatus.schemaPass 
+						let operationStatus = await sweep({ schema: { [currentKeyAsNewPropertyName]: 1  }, subject: { [key]: result[objectPropertyInfo?.currentKeyAlias || key] } })
+						result[objectPropertyInfo?.currentKeyAlias || key] = operationStatus.schemaPass 
 							? operationStatus.result[key] 
 							: operationStatus.result[key] instanceof Array ? [] : Object.create(null);
 					}
@@ -1128,4 +1145,4 @@ const sweep = async({ schema, subject, mode }) => {
 	return { schemaPass, result };
 }
 
-module.exports = { filterSchema, laundry };
+export { filterSchema, laundry };
