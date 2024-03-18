@@ -1,7 +1,8 @@
 <img src="assets/logo.svg" width="220px"/>
 <br/>
 Syntaxe for JavaScript
-
+<br/>
+<br/>
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
 ![NPM Version](https://img.shields.io/badge/npm-v1.0.0-D50100)
