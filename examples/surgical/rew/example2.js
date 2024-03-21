@@ -5,6 +5,13 @@ const sampleData = [
     { id: 2, text: "Pack  my box with five   dozen liquor  jugs.", status: 'Inactive' },
 ];
 
+/*
+- Return just id and text for each object in the array
+- Rename id as userId
+- For text
+    - Replace any occurrence of multiple whitespace with single whitespace
+*/
+
 const sx = new Syntaxe({
     data: sampleData,
     schema: `{

@@ -1,4 +1,4 @@
-<img src="assets/logo.svg" width="220px"/>
+<img src="assets/logo.svg" width="180px"/>
 <br/>
 Syntaxe for JavaScript
 <br/>
@@ -1247,7 +1247,7 @@ new Syntaxe({
   Not Null
   <br/>
   <br/>
-  Checks if data value is not null
+  Checks if data value is not null, undefined or an empty string
 </td>
 <td align="left">
 

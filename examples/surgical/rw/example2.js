@@ -5,12 +5,21 @@ const sampleData = [
     { id: 2, text: "Pack  my box with five   dozen liquor  jugs.", status: 'Inactive', mobileNo: "(803) 425-8670" },
 ];
 
+/*
+- Return just id, text and mobileNo for each object in the array
+- Rename id as userId
+- For text
+  - Replace any occurrence of multiple whitespace with single whitespace
+- Rename mobileNo as phone
+- Replace whitespace in phone with no space
+*/
+
 const sx = new Syntaxe({
     data: sampleData,
     schema: `{
         id [as:"userId"]
         text [rew:" "]
-        mobileNo [as:"phone"][rw]
+        mobileNo [as:"phone"] [rw]
     }`
 });
 

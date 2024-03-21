@@ -1,6 +1,13 @@
 import Syntaxe from '../../../src/index.js';
 import appUsersLite from '../../../data/app-users-lite.js';
 
+/*
+- Return just id and loggedInFrom for each object in the array
+- For loggedInFrom
+  - Return country and cities
+  - Return distinct values for cities
+*/
+
 const sx = new Syntaxe({
     data: appUsersLite,
     schema: `{

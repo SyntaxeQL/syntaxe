@@ -396,11 +396,11 @@ const sweep = async({ schema, subject, mode }) => {
 								break;
 							case 'in': // in array
 								keyPass = Array.isArray(value)
-									? value.some(v => Array.from(haystack).includes(v)) : Array.from(haystack).includes(value);
+									? value.some(v => haystack.some(x => (x == v || x === v))) : haystack.some(x => (x == value || x === value));
 								break;
 							case 'nin': // not in
 								keyPass = Array.isArray(value)
-									? value.every(v => !Array.from(haystack).includes(v)) : !Array.from(haystack).includes(value);
+									? value.every(v => !(haystack.some(x => (x == v || x === v)))) : !(haystack.some(x => (x == value || x === value)));
 								break;
 							case 'ini': 	// in array / case insensitive
 							case 'nini': 	// not in / case insensitive
@@ -1038,7 +1038,7 @@ const sweep = async({ schema, subject, mode }) => {
 									: value;
 								break;
 							case 'btw': // get item in range
-								operationObject.haystack = (haystack.length == 2) ? [haystack[0], haystack[1]] : [0, haystack[0]];
+								operationObject.haystack = (haystack.length == 2) ? [Number(haystack[0]) - 1, haystack[1]] : [0, haystack[0]];
 								value = Array.isArray(value) 
 									? value.slice(operationObject.haystack[0], operationObject.haystack[1]) || [] : value;
 								break;
@@ -1124,6 +1124,9 @@ const sweep = async({ schema, subject, mode }) => {
 						result[objectPropertyInfo?.currentKeyAlias || key] = operationStatus.schemaPass 
 							? operationStatus.result[key] 
 							: operationStatus.result[key] instanceof Array ? [] : Object.create(null);
+
+						// add key pass to its set
+						keyPassSet.add(operationStatus.schemaPass);
 					}
 				}
 			}

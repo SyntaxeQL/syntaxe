@@ -1,6 +1,17 @@
 import Syntaxe from '../../../src/index.js';
 import appUsersLite from '../../../data/app-users-lite.js';
 
+/*
+- Return just id, status, langs and loggedInFrom for each object in the array
+- Rename id as userId
+- Rename langs as languages
+- For loggedInFrom
+  - Return country and cities
+  - Return first entry for cities
+  - Return last entry for loggedInFrom
+- Return last 2 entries for the parent array 
+*/
+
 const sx = new Syntaxe({
     data: appUsersLite,
     schema: `{

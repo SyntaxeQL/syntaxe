@@ -1,6 +1,11 @@
 import Syntaxe from '../../../src/index.js';
 import appUsersLite from '../../../data/app-users-lite.js';
 
+/*
+- Return just id for each object in the array
+- Rename id as userId
+*/
+
 const sx = new Syntaxe({
     data: appUsersLite,
     schema: `{
