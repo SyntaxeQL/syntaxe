@@ -342,7 +342,7 @@ const sweep = async({ schema, subject, mode }) => {
 						rs && (filtered = String(rs).replace(regexify(patterns.general.quotes, true, true), '') || '');
 
 						// define haystack
-						let haystack = (["in", "nin", "ini", "nini", "sin", "snin", "dtin", "dtnin", "dtmin", "dtmnin", 
+						let haystack = (["in", "nin", "ini", "nini", "sin", "snin", "dtin", "dtnin", "dtinrange", "dtninrange", "dtmin", "dtmnin", 
 														"yin", "ynin", "min", "mnin", "minrange", "mninrange", "din", "dnin", "dinrange", "dninrange", "dwin", "dwnin", "dwinrange", "dwninrange",
 														"hin", "hnin", "hinrange", "hninrange", "minin", "minnin", "mininrange", "minninrange",
 														"tin", "tnin", "tinrange", "tninrange", "agoin", "btw"].includes(ls))
@@ -484,12 +484,23 @@ const sweep = async({ schema, subject, mode }) => {
 								break;
 							case 'dtin': // check if date is in range
 							case 'dtnin': // check if date is not in range
+								operationObject.valueDate = dateify(value).toLocaleDateString();
+								operationObject.haystack = haystack;
+								operationObject.status = operationObject.haystack.some(dt => {
+									const lineDate = dateify(dt).toLocaleDateString();
+									return ((lineDate != 'Invalid Date') && (operationObject.valueDate == lineDate));
+								});
+								keyPass = (![String(operationObject.valueDate)].includes('Invalid Date')) 
+									&& ((ls == 'dtin') ? operationObject.status : !operationObject.status);
+								break;
+							case 'dtinrange': // check if date is in range
+							case 'dtninrange': // check if date is not in range
 								operationObject.valueDate = dateify(dateify(value).toLocaleDateString());
-								operationObject.haystack = { min: dateify(dateify(haystack[0]).toLocaleDateString()), max: dateify(dateify(haystack[1]).toLocaleDateString()) }; 
+								operationObject.haystack = { min: dateify(dateify(haystack[0]).toLocaleDateString()), max: (haystack.length == 2 ? dateify(dateify(haystack[1]).toLocaleDateString()) : dateify().toLocaleDateString()) }; 
 								operationObject.status = ((operationObject.valueDate > operationObject.haystack.min) || (operationObject.valueDate.toLocaleDateString() == operationObject.haystack.min.toLocaleDateString())) 
 									&& ((operationObject.valueDate < operationObject.haystack.max) || (operationObject.valueDate.toLocaleDateString() == operationObject.haystack.max.toLocaleDateString()));
 								keyPass = (![String(operationObject.valueDate), String(operationObject.haystack.min), String(operationObject.haystack.max)].includes('Invalid Date')) 
-									&& ((ls == 'dtin') ? operationObject.status : !operationObject.status);
+									&& ((ls == 'dtinrange') ? operationObject.status : !operationObject.status);
 								break;
 							case 'dtmeq': // check if datetime equal
 							case 'dtmne': // check if datetime / not equal
