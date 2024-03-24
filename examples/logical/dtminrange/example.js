@@ -6,38 +6,18 @@ import appUsersLite from '../../../data/app-users-lite.js';
 - Object is returned if dateJoined matches the provided range of date/time values and
 - If lastLogin matches the provided range of date/time values
 */
-const dtmValue1 = new Date(2024,2,5,23,59,50);
-const dtmValue2 = new Date(2024,2,6,10,0,0);
-const sx = new Syntaxe({
-    // data: appUsersLite,
-    // schema: `{
-    //     id
-    //     fullName
-    //     dateJoined [dtminrange:["${new Date("2021-01-01 00:00:00")}", "${new Date()}"]]
-    //     lastLogin [dtminrange:["${new Date("2021-01-01 00:10:00")}", "${new Date()}"]]
-    // }`
 
-    data: [
-        {
-          id: 1,
-          status: 'success',
-          statusDate: '3/6/2024 10:00:00'
-        },
-        {
-          id: 2,
-          status: 'failed',
-          statusDate: '3/8/2024 10:00:00'
-        }
-      ],
-      schema: `{
-        statusDate
-        [dtmnin:["${dtmValue1}",
-          "${dtmValue2}"]]
-      }`
+const sx = new Syntaxe({
+    data: appUsersLite,
+    schema: `{
+        id
+        fullName
+        dateJoined [dtminrange:["${new Date("2021-01-01 00:00:00")}", "${new Date()}"]]
+        lastLogin [dtminrange:["${new Date("2021-01-01 00:10:00")}", "${new Date()}"]]
+    }`
 });
 
-// await sx.query();
-console.log(await sx.query());
+await sx.query();
 
 /*
 Result:
