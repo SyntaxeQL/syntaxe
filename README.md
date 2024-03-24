@@ -2191,7 +2191,7 @@ new Syntaxe({
 </td>
 </tr>
 
-<!-- 34 -->
+<!-- 33/2 -->
 <tr>
 <td align="left">
   
@@ -2200,6 +2200,98 @@ new Syntaxe({
 </td>
 <td align="left">
   Date In
+  <br/>
+  <br/>
+  Checks if date value matches an entry in array
+</td>
+<td align="left">
+
+```js
+const dateValue1 = new Date(2024,2,4);
+const dateValue2 = new Date(2024,2,7);
+const dateValue3 = new Date(2024,2,8);
+
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '3/6/2024'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '3/8/2024'
+    }
+  ],
+  schema: `{
+    statusDate
+    [dtin:["${dateValue1}",
+        "${dateValue2}",
+        "${dateValue3}"]]
+  }`
+});
+// [ { statusDate: '3/8/2024' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 33/3 -->
+<tr>
+<td align="left">
+  
+`[dtnin]`
+
+</td>
+<td align="left">
+  Date Not In
+  <br/>
+  <br/>
+  Checks if date value matches no entry in array
+</td>
+<td align="left">
+
+```js
+const dateValue1 = new Date(2024,2,4);
+const dateValue2 = new Date(2024,2,7);
+const dateValue3 = new Date(2024,2,8);
+
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '3/6/2024'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '3/8/2024'
+    }
+  ],
+  schema: `{
+    statusDate
+    [dtnin:["${dateValue1}",
+        "${dateValue2}",
+        "${dateValue3}"]]
+  }`
+});
+// [ { statusDate: '3/6/2024' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 34 -->
+<tr>
+<td align="left">
+  
+`[dtinrange]`
+
+</td>
+<td align="left">
+  Date In Range
   <br/>
   <br/>
   Checks if date value is in provided date range
@@ -2225,7 +2317,7 @@ new Syntaxe({
   ],
   schema: `{
     statusDate
-    [dtin:["${dateValue1}",
+    [dtinrange:["${dateValue1}",
         "${dateValue2}"]]
   }`
 });
@@ -2239,11 +2331,11 @@ new Syntaxe({
 <tr>
 <td align="left">
   
-`[dtnin]`
+`[dtninrange]`
 
 </td>
 <td align="left">
-  Date Not In
+  Date Not In Range
   <br/>
   <br/>
   Checks if date value is not in provided date range
@@ -2269,7 +2361,7 @@ new Syntaxe({
   ],
   schema: `{
     statusDate
-    [dtnin:["${dateValue1}",
+    [dtninrange:["${dateValue1}",
         "${dateValue2}"]]
   }`
 });
