@@ -342,7 +342,7 @@ const sweep = async({ schema, subject, mode }) => {
 						rs && (filtered = String(rs).replace(regexify(patterns.general.quotes, true, true), '') || '');
 
 						// define haystack
-						let haystack = (["in", "nin", "ini", "nini", "sin", "snin", "dtin", "dtnin", "dtinrange", "dtninrange", "dtmin", "dtmnin", 
+						let haystack = (["in", "nin", "ini", "nini", "sin", "snin", "dtin", "dtnin", "dtinrange", "dtninrange", "dtmin", "dtmnin", "dtminrange", "dtmninrange",
 														"yin", "ynin", "min", "mnin", "minrange", "mninrange", "din", "dnin", "dinrange", "dninrange", "dwin", "dwnin", "dwinrange", "dwninrange",
 														"hin", "hnin", "hinrange", "hninrange", "minin", "minnin", "mininrange", "minninrange",
 														"tin", "tnin", "tinrange", "tninrange", "agoin", "btw"].includes(ls))
@@ -482,8 +482,8 @@ const sweep = async({ schema, subject, mode }) => {
 									&& (((ls == 'dtgte') ? (operationObject.valueDate > operationObject.filteredDate) : (operationObject.valueDate < operationObject.filteredDate)) 
 											|| (operationObject.valueDate.toLocaleDateString() == operationObject.filteredDate.toLocaleDateString()));
 								break;
-							case 'dtin': // check if date is in range
-							case 'dtnin': // check if date is not in range
+							case 'dtin': // check if date is in list
+							case 'dtnin': // check if date is not in list
 								operationObject.valueDate = dateify(value).toLocaleDateString();
 								operationObject.haystack = haystack;
 								operationObject.status = operationObject.haystack.some(dt => {
@@ -522,14 +522,25 @@ const sweep = async({ schema, subject, mode }) => {
 									&& (((ls == 'dtmgte') ? (operationObject.valueDate > operationObject.filteredDate) : (operationObject.valueDate < operationObject.filteredDate)) 
 											|| (String(operationObject.valueDate) == String(operationObject.filteredDate)));
 								break;
-							case 'dtmin': // check if datetime is in range
-							case 'dtmnin': // check if datetime is not in range
+							case 'dtmin': // check if datetime is in list
+							case 'dtmnin': // check if datetime is not in list
+								operationObject.valueDate = dateify(value);
+								operationObject.haystack = haystack;
+								operationObject.status = operationObject.haystack.some(dtm => {
+									const lineDateTime = dateify(dtm)
+									return ((lineDateTime != 'Invalid Date') && (String(operationObject.valueDate) == String(lineDateTime)));
+								});
+								keyPass = (![String(operationObject.valueDate)].includes('Invalid Date'))  
+									&& ((ls == 'dtmin') ? operationObject.status : !operationObject.status);
+								break;
+							case 'dtminrange': // check if datetime is in range
+							case 'dtmninrange': // check if datetime is not in range
 								operationObject.valueDate = dateify(value);
 								operationObject.haystack = { min: dateify(haystack[0]), max: dateify(haystack[1]) };
 								operationObject.status = ((operationObject.valueDate > operationObject.haystack.min) || (String(operationObject.valueDate) == String(operationObject.haystack.min))) 
 									&& ((operationObject.valueDate < operationObject.haystack.max) || (String(operationObject.valueDate) == String(operationObject.haystack.max)));
 								keyPass = (![String(operationObject.valueDate), String(operationObject.haystack.min), String(operationObject.haystack.max)].includes('Invalid Date'))  
-									&& ((ls == 'dtmin') ? operationObject.status : !operationObject.status);
+									&& ((ls == 'dtminrange') ? operationObject.status : !operationObject.status);
 								break;
 							case 'yeq': // check if date year equal
 							case 'yne': // check if date year / not equal

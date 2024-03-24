@@ -2623,7 +2623,7 @@ new Syntaxe({
 </td>
 </tr>
 
-<!-- 42 -->
+<!-- 41/2 -->
 <tr>
 <td align="left">
   
@@ -2640,7 +2640,7 @@ new Syntaxe({
 
 ```js
 const dtmValue1 = new Date(2024,2,5,23,59,50);
-const dtmValue2 = new Date(2024,2,6,10,0,1);
+const dtmValue2 = new Date(2024,2,6,10,0,0);
 
 new Syntaxe({
   data: [
@@ -2667,7 +2667,7 @@ new Syntaxe({
 </td>
 </tr>
 
-<!-- 43 -->
+<!-- 41/3 -->
 <tr>
 <td align="left">
   
@@ -2676,6 +2676,94 @@ new Syntaxe({
 </td>
 <td align="left">
   Date/Time Not In
+  <br/>
+  <br/>
+  Checks if datetime value is not in provided datetime range
+</td>
+<td align="left">
+
+```js
+const dtmValue1 = new Date(2024,2,5,23,59,50);
+const dtmValue2 = new Date(2024,2,6,10,0,0);
+
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '3/6/2024 10:00:00'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '3/8/2024 10:00:00'
+    }
+  ],
+  schema: `{
+    statusDate
+    [dtmnin:["${dtmValue1}",
+      "${dtmValue2}"]]
+  }`
+});
+// [ { statusDate: '3/8/2024 10:00:00' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 42 -->
+<tr>
+<td align="left">
+  
+`[dtminrange]`
+
+</td>
+<td align="left">
+  Date/Time In Range
+  <br/>
+  <br/>
+  Checks if datetime value is in provided datetime range
+</td>
+<td align="left">
+
+```js
+const dtmValue1 = new Date(2024,2,5,23,59,50);
+const dtmValue2 = new Date(2024,2,6,10,0,1);
+
+new Syntaxe({
+  data: [
+    {
+      id: 1,
+      status: 'success',
+      statusDate: '3/6/2024 10:00:00'
+    },
+    {
+      id: 2,
+      status: 'failed',
+      statusDate: '3/8/2024 10:00:00'
+    }
+  ],
+  schema: `{
+    statusDate
+    [dtminrange:["${dtmValue1}",
+      "${dtmValue2}"]]
+  }`
+});
+// [ { statusDate: '3/6/2024 10:00:00' } ]
+```
+  
+</td>
+</tr>
+
+<!-- 43 -->
+<tr>
+<td align="left">
+  
+`[dtmninrange]`
+
+</td>
+<td align="left">
+  Date/Time Not In Range
   <br/>
   <br/>
   Checks if datetime value is not in provided datetime range
@@ -2701,7 +2789,7 @@ new Syntaxe({
   ],
   schema: `{
     statusDate
-    [dtmnin:["${dtmValue1}",
+    [dtmninrange:["${dtmValue1}",
       "${dtmValue2}"]]
   }`
 });
