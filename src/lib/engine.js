@@ -343,7 +343,7 @@ const sweep = async({ schema, subject, mode }) => {
 
 						// define haystack
 						let haystack = (["in", "nin", "ini", "nini", "sin", "snin", "dtin", "dtnin", "dtinrange", "dtninrange", "dtmin", "dtmnin", "dtminrange", "dtmninrange",
-														"yin", "ynin", "min", "mnin", "minrange", "mninrange", "din", "dnin", "dinrange", "dninrange", "dwin", "dwnin", "dwinrange", "dwninrange",
+														"yin", "ynin", "yinrange", "yninrange", "min", "mnin", "minrange", "mninrange", "din", "dnin", "dinrange", "dninrange", "dwin", "dwnin", "dwinrange", "dwninrange",
 														"hin", "hnin", "hinrange", "hninrange", "minin", "minnin", "mininrange", "minninrange",
 														"tin", "tnin", "tinrange", "tninrange", "agoin", "btw"].includes(ls))
 							? String(filtered).replace(regexify(patterns.general.operation, true, true), '')
@@ -566,14 +566,24 @@ const sweep = async({ schema, subject, mode }) => {
 											? (Number(operationObject.valueDate.getFullYear()) >= Number(operationObject.filteredDate)) 
 											: (Number(operationObject.valueDate.getFullYear()) <= Number(operationObject.filteredDate)));
 								break;
-							case 'yin': // check if date year is in range
-							case 'ynin': // check if date year is not in range
+							case 'yin': // check if date year is in list
+							case 'ynin': // check if date year is not in list
+								operationObject.valueDate = dateify(value);
+								operationObject.haystack = haystack;
+								operationObject.status = operationObject.haystack.some(year => {
+									return ((year != 'Invalid Date') && (String(operationObject.valueDate.getFullYear()) == String(year)));
+								});
+								keyPass = (![String(operationObject.valueDate)].includes('Invalid Date')) 
+									&& ((ls == 'yin') ? operationObject.status : !operationObject.status);
+								break;
+							case 'yinrange': // check if date year is in range
+							case 'yninrange': // check if date year is not in range
 								operationObject.valueDate = dateify(value);
 								operationObject.haystack = { min: haystack[0], max: haystack[1] };
 								operationObject.status = (Number(operationObject.valueDate.getFullYear()) >= Number(operationObject.haystack.min)) 
 									&& (Number(operationObject.valueDate.getFullYear()) <= Number(operationObject.haystack.max));
 								keyPass = (![String(operationObject.valueDate)].includes('Invalid Date')) 
-									&& ((ls == 'yin') ? operationObject.status : !operationObject.status);
+									&& ((ls == 'yinrange') ? operationObject.status : !operationObject.status);
 								break;
 							case 'meq': // check if date month equal
 							case 'mne': // check if date month / not equal

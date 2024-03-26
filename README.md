@@ -118,10 +118,10 @@ Object schema
 const olSchemaResult = await sx.query({
   schema: `{
     id
-    login[as:"username"]
+    login [as:"username"]
     type
     site_admin
-  }[first:2]`
+  } [first:2]`
 });
 
 /*
@@ -274,7 +274,7 @@ const useCase1 = new Syntaxe({
   schema: `{
     id
     login
-  }[first:5]`
+  } [first:5]`
 });
 await useCase1.query();
 
@@ -334,8 +334,8 @@ const useCase3 = new Syntaxe();
 const useCase3Result = await useCase3.query({
   data: users,
   schema: `{
-    login[as:"userId"]
-  }[last]`
+    login [as:"userId"]
+  } [last]`
 });
 
 /*
@@ -364,8 +364,8 @@ const useCase4 = new Syntaxe();
 useCase4.data(users);
 const useCase4Result1 = await useCase4.query({
   schema: `{
-    id[lt:5]
-    login[as:"secureId"]
+    id [lt:5]
+    login [as:"secureId"]
   }`
 });
 
@@ -389,8 +389,8 @@ Object schema
 */
 
 useCase4.schema(`{
-  id[as:"sn"][gt:5]
-}[first:10]`);
+  id [as:"sn"] [gt:5]
+} [first:10]`);
 await useCase4.query();
 
 /*
@@ -426,7 +426,7 @@ const useCase5Result = await useCase5
                               .schema(`{
                                 id
                                 login
-                                type[nei:"user"]
+                                type [nei:"user"]
                               }`)                              
                               .query();
 
@@ -456,8 +456,8 @@ const useCase6 = new Syntaxe();
 const useCase6Result = useCase6
                         .data(users)
                         .schema(`{
-                          type[eqi:"user"]
-                        }[size]`)
+                          type [eqi:"user"]
+                        } [size]`)
                         .query();
 
 useCase6Result.then((result) => {});
