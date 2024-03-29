@@ -37,6 +37,8 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
     - [Use case 6 (Using the .then() Promise method)](#use-case-6-using-the-then-promise-method)
 - [Operators](#operators)
   - [What are those❓](#what-are-those-)
+  - [Omission Operator ✂](#omission-operator-)
+    - [Sample Usage](#sample-usage)
   - [Surgical Operators 💉](#surgical-operators-)
   - [Logical Operators 🧠](#logical-operators-)
   - [The COND operator](#the-cond-operator)
@@ -476,7 +478,51 @@ Result:
 
 Operators are an essential part of performing queries with syntaxe, they can be used in conjunction with a schema to filter or mutate the data.
 
-Operators are always enclosed in square brackets `[]`, and can be surgical (mutate data) or logical (filter based on conditions).
+Operators are always enclosed in square brackets `[]`, and can be surgical (mutate data) or logical (filter based on conditions), with the exception of the independent omission operator `?`.
+
+## Omission Operator ✂
+
+This operator is used to omit any part of the computed data not needed in the final result.
+
+This is especially good for scenarios where a property not needed in the final result, may have associated operations necessary to determine the overall returned data.
+
+_Please note that the operator `?` must always be appended to the property to be omitted i.e. `id? [gt:2]`._
+
+### Sample Usage
+
+```js
+import Syntaxe from "syntaxe";
+
+const response = await fetch('https://api.github.com/users');
+const users = await response.json();
+
+/*
+Object schema
+1. Extract the specified properties of each object in the array (id, login and site_admin)
+2. id must be greater than 10 - [gt:10]
+3. Rename 'login' to 'userId' - [as:"userId"]
+4. site_admin must match false - [eq:"false"]
+4. Omit site_admin and return just id and login for each object - ? 
+4. Return the first entry of resulting array - [first]
+*/
+
+const sxObj = new Syntaxe();
+const result = await sxObj.query({
+  data: users,
+  schema: `{
+    id [gt:10]
+    login [as:"userId"]
+    site_admin? [eq:"false"]
+  } [first]`
+});
+
+/*
+Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
+
+Result:
+{ id: 17, userId: 'vanpelt' }
+*/
+```
 
 ## Surgical Operators 💉
 
