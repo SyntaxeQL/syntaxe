@@ -2,7 +2,7 @@ import Syntaxe from '../../../src/index.js';
 import appUsers from '../../../data/app-users.js';
 
 /*
-- Return id, package, status and dateJoined for each object in the array
+- Return id and dateJoined for each object in the array
 - package must be 'free'
 - status must be 'active'
 - For dateJoined 
@@ -14,8 +14,8 @@ const sx = new Syntaxe({
     data: appUsers,
     schema: `{
         id
-        package [eq:"free"]
-        status [eq:"active"]
+        package? [eq:"free"]
+        status? [eq:"active"]
         dateJoined [dwinrange:["Mon", "Wed"]] [ygt:2020] [ylt:2024]
     }`
 });
@@ -23,13 +23,5 @@ const sx = new Syntaxe({
 await sx.query();
 
 /*
-Result:
-[
-  {
-    id: 43,
-    package: 'free',
-    status: 'active',
-    dateJoined: '2021-09-21T02:09:25.158Z'
-  }
-]
+Result: [ { id: 43, dateJoined: '2021-09-21T02:09:25.158Z' } ]
 */

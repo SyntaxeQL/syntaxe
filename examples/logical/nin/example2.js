@@ -2,7 +2,7 @@ import Syntaxe from '../../../src/index.js';
 import appUsersLite from '../../../data/app-users-lite.js';
 
 /*
-- Return just id and loggedInFrom for each object in the array where the id is 1, 3 or 5
+- Return just id for each object in the array where the id is 1, 3 or 5
 - For loggedInFrom
     - Return country and cities
     - Return the object if country is anything except 'Uk' or 'Canada'
@@ -15,7 +15,7 @@ const sx = new Syntaxe({
     data: appUsersLite,
     schema: `{
         id [nin:[1, 3, 5]]
-        loggedInFrom {
+        loggedInFrom? {
             country [nin:["UK", "Canada"]]
             cities [as:"city"] [first]
         } [dist:"country"]
@@ -26,19 +26,5 @@ await sx.query();
 
 /*
 Result:
-[
-  {
-    "id": 2,
-    "loggedInFrom": [
-      {
-        "country": "USA",
-        "city": "Phoenix"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "loggedInFrom": []
-  }
-]
+[ { id: 2 }, { id: 4 } ]
 */

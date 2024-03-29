@@ -1,4 +1,4 @@
-import { filterSchema, laundry } from './lib/engine.js';
+import { filterSchema, walkThroughHandler } from './lib/engine.js';
 
 const Syntaxe = class {
 	#data; #schema;
@@ -25,7 +25,7 @@ const Syntaxe = class {
 				throw new Error(`'schema' is invalid.`);
 
 			const filtered = await filterSchema(this.#schema);
-			return await laundry({ data: this.#data, ...filtered });
+			return await walkThroughHandler({ data: this.#data, ...filtered });
 		} catch(err) { return err; }
 	}
 

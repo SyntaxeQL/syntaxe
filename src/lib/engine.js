@@ -1,89 +1,12 @@
-// define patterns
-const patterns = {
-	general: {
-		newLine 				: /(\\n|\n)/,
-		opList 					: /\](\s*)\[/,
-		operation 			: /\[|\]/,
-		quotes 					: /(\`|\"|\')|(\`|\"|\')/,
-		raws						: / {2,}/,
-		ws							: / /,
-		nonTimeXter			: /[^\d:]/,
-		nonDigit				: /[^\d]/,
-		nonDecimal			: /[^\d\.]/,
-		nonAlphabet			: /[^a-z]/,
-		nonSign 				: /[^-\+]/
-	},
-	operations: {
-		propertyOp 			: /(((\w+)(\s*))((\s*)\[(\s*)(\w+)(\s*)(:*)(\s*)(\'([\w\+\s\(\):]*|\s{1,})\'|\"([\w\+\s\(\):]*|\s{1,})\"|(\[[\"\w\+\s\(\):\",]+\])|(\"[-\d\w\s]+\")|(\[(\s*)\/(\^?)(\w+)(\$?)\/(\w*)(\,(\s*)\/(\^?)(\w+)(\$?)\/(\w*))*(\s*)\])|(\[(\s*)\"[\w\/]*\"(\,(\s*)\"[\w\/]*\")+(\s*)\](\s*))|(\w+)|((\/)(\S+)(\/)(\w*)(\s*))|(\S+))\])+)/,
-		objectOp 				: /(((\})(\s*))((\s*)\[(\w+)(\s*)(:*)(\s*)((\[[\"\w\+\s\(\):\",]+\])|\"(.+)\"|(\w+)|((\+|\-){1}\w+))\])+)/,
-	},
-	schema: {
-		commaAndSpace  	: /(,)|(\s{2,})/,
-		objectProperty 	: /(((\w+)(\-|\.)*(\w+))|(\*instr-p:((\w+)(\-|\.)*(\w+)))|(\*instr-o:id_(\w+)))/,
-		spaceAndBrace 	: /(" ")|((" |")\{)|((" |")\})/,
-		braceAndSpace 	: /\}( "|")/
-	}
-};
-
-// define objects holder
-const holder = {
-	propertyOps 	: null,
-	objectOps			: null,
-	rootOp 				: null,
-	rootKey 			: 'root',
-	context 			: 'json',
-	mode 					: 'and',
-	condition 		: 'and',
-	defaultDate		: [1991,6,1]
-};
-
-// month map
-const monthMap = new Map([
-	[0, ['january', 'jan']], [1, ['february', 'feb']], [2, ['march', 'mar']],
-	[3, ['april', 'apr']], [4, ['may', 'may']], [5, ['june', 'jun']],
-	[6, ['july', 'jul']], [7, ['august', 'aug']], [8, ['september', 'sep']],
-	[9, ['october', 'oct']], [10, ['november', 'nov']], [11, ['december', 'dec']]
-]);
-
-// day map
-const dayMap = new Map([
-	[1, ['monday', 'mon']], [2, ['tuesday', 'tue']], [3, ['wednesday', 'wed']],
-	[4, ['thursday', 'thu', 'thur']], [5, ['friday', 'fri']], [6, ['saturday', 'sat']], 
-	[0, ['sunday', 'sun']]
-]);
-
-// time duration array
-const timeDuration = [
-	'se', 'second', 'seconds',
-	'mi', 'minute', 'minutes',
-	'hr', 'hour', 	'hours',
-	'dy', 'day', 		'days',
-	'wk', 'week', 	'weeks',
-	'mo', 'month', 	'months',
-	'yr', 'year', 	'years',
-];
-
-// time ticks map
-const timeTicksMap = new Map([
-	['sec', 1000],
-	['min', 1000 * 60],
-	['hou', 1000 * 60 * 60],
-	['day', 1000 * 60 * 60 * 24],
-	['wee', 1000 * 60 * 60 * 24 * 7],
-	['mon', 1000 * 60 * 60 * 24 * 31],
-	['yea', 1000 * 60 * 60 * 24 * 31 * 12]
-]);
-
-// time duration map
-const timeDurationMap = new Map([
-	['se', timeTicksMap.get('sec')], ['second', timeTicksMap.get('sec')], ['seconds', timeTicksMap.get('sec')],
-	['mi', timeTicksMap.get('min')], ['minute', timeTicksMap.get('min')], ['minutes', timeTicksMap.get('min')],
-	['hr', timeTicksMap.get('hou')], ['hour', timeTicksMap.get('hou')], ['hours', timeTicksMap.get('hou')],
-	['dy', timeTicksMap.get('day')], ['day', timeTicksMap.get('day')], ['days', timeTicksMap.get('day')],
-	['wk', timeTicksMap.get('wee')], ['week', timeTicksMap.get('wee')], ['weeks', timeTicksMap.get('wee')],
-	['mo', timeTicksMap.get('mon')], ['month', timeTicksMap.get('mon')], ['months', timeTicksMap.get('mon')],
-	['yr', timeTicksMap.get('yea')], ['year', timeTicksMap.get('yea')], ['years', timeTicksMap.get('yea')]
-]);
+import {
+	patterns,
+	holder,
+	monthMap,
+	dayMap,
+	timeDuration,
+	timeTicksMap,
+	timeDurationMap
+} from './helpers.js';
 
 // convert string pattern to regex
 const regexify = (pattern, regexStart, regexEnd, options) =>
@@ -99,19 +22,19 @@ const randomKey = (length, start, end) => Math.random().toString(length ?? 20).s
 const findMonthIndex = (month) => {
 	for (let item of monthMap) {
 		if (item[1].includes(month.toLowerCase()))
-			return item[0] + 1
+			return item[0] + 1;
 	} 
-	return 0
-}
+	return 0;
+};
 
 // get day index from day name
 const findDayIndex = (day) => {
 	for (let item of dayMap) {
 		if (item[1].includes(day.toLowerCase()))
-			return item[0] + 1
+			return item[0] + 1;
 	} 
-	return 0
-}
+	return 0;
+};
 
 // filter operations
 const filterOperations = async(schema) => {
@@ -152,11 +75,18 @@ const filterOperations = async(schema) => {
       			operations = operations.filter(x => !x.match(/cond:/));
       		}
 
+      		// define regex
+      		let omissionRegex = regexify(patterns.general.omission, null, true);
+
+      		// check for omission operator
+      		let omissionStatus = prop.trim().match(omissionRegex);
+
       		// pass property name and operations into holder
       		holder.propertyOps.set(name, {
-      			property: prop.trim(),
+      			property: prop.trim().replace(omissionRegex, ''),
       			operation: operations,
-      			condition: propertyCondition
+      			condition: propertyCondition,
+      			omit: Boolean(omissionStatus)
       		});
 
 	        return `${name}`;
@@ -221,7 +151,7 @@ const filterOperations = async(schema) => {
 	} catch(err) {
 		return schema;
 	}
-}
+};
 
 // filter the schema
 const filterSchema = async(schema) => {
@@ -249,10 +179,10 @@ const filterSchema = async(schema) => {
 	} catch(err) {
 		return { status: false };
 	}
-}
+};
 
 // clean up and extract data
-const laundry = async({ data, status, schema }) => {
+const walkThroughHandler = async({ data, status, schema }) => {
 	// check if no schema
 	if (!schema) return undefined;
 	// only work for data that can be jsonified
@@ -264,7 +194,7 @@ const laundry = async({ data, status, schema }) => {
 		
 		// process the schema and subject
 		let result = (holder.context == 'json') 
-			? (await sweep({ schema, subject })).result
+			? (await schemaWalkThrough({ schema, subject })).result
 			: subject;
 
 		// check if root operations available
@@ -280,7 +210,7 @@ const laundry = async({ data, status, schema }) => {
   		});
 
   		// compute status
-			let operationStatus = await sweep({ schema: { [name]: 1 }, subject: { [holder.rootKey]: result } })
+			let operationStatus = await schemaWalkThrough({ schema: { [name]: 1 }, subject: { [holder.rootKey]: result } })
 			result = operationStatus.schemaPass 
 				? operationStatus.result[holder.rootKey]
 				: operationStatus.result[holder.rootKey] instanceof Array ? [] : Object.create(null);
@@ -290,10 +220,10 @@ const laundry = async({ data, status, schema }) => {
 		console.error(new Date(), err, schema)
 		return null
 	}
-}
+};
 
 // sweep through and extract data
-const sweep = async({ schema, subject, mode }) => {
+const schemaWalkThrough = async({ schema, subject, mode }) => {
 	// define result as an object and property pass
 	let result = {}, schemaPass = true, schemaPassSet = new Set([]), filtered = null;
 
@@ -303,7 +233,7 @@ const sweep = async({ schema, subject, mode }) => {
 		result = [];
 		// loop through array of data
 		for (let item of subject) {
-			let line = await sweep({ schema: schema, subject: item, mode });
+			let line = await schemaWalkThrough({ schema: schema, subject: item, mode });
 			line.schemaPass && result.push(line.result);
 		}
 	} else {
@@ -316,7 +246,13 @@ const sweep = async({ schema, subject, mode }) => {
 			++keyCounter;
 
 			// define property pass and set
-			let keyPass = true, keyPassSet = new Set([]), propertyInfo = null;
+			let keyPass = true, keyPassSet = new Set([]), propertyInfo = null,
+					keyOmissionRegex = regexify(patterns.general.omission, null, true),
+					keyOmissionStatus = Boolean(key.match(keyOmissionRegex)),
+					keyAsIs = key;
+
+			// normalize key
+			key = key.replace(keyOmissionRegex, '');
 
 			// check if property has operation(s)
 			if (holder.propertyOps.has(key)) {
@@ -1093,14 +1029,17 @@ const sweep = async({ schema, subject, mode }) => {
 						keyPassSet.add(keyPass);
 					}
 
-					// place key and its value in new schema
-					result[propertyInfo.alias || propertyInfo.property] = value;
+					// place key and its value in new schema / if no omission operator
+					if (!propertyInfo.omit)
+						result[propertyInfo.alias || propertyInfo.property] = value;
 				}
 			}
 			// check if property exists in normal schema
 			else if (subject.hasOwnProperty(key)) {
-				if (schema[key] === 1)
-					result[key] = subject[key];
+				if (schema[key] === 1) {
+					if (!keyOmissionStatus)
+						result[key] = subject[key];
+				}
 				else {
 					// define store
 					let objectHasOperationsStatus = false,
@@ -1146,16 +1085,19 @@ const sweep = async({ schema, subject, mode }) => {
 			    	}
 					}
 					
-					// process schema and subject for current key
-					result[objectPropertyInfo?.currentKeyAlias || key] = (await sweep({ schema: schema[key], subject: subject[key], mode: currentKeyMode })).result;
+					// process schema and subject for current key / if omission operator
+					if (!keyOmissionStatus || (keyOmissionStatus && objectHasOperationsStatus))
+						result[objectPropertyInfo?.currentKeyAlias || key] = (await schemaWalkThrough({ schema: schema[key] ?? schema[keyAsIs], subject: subject[key], mode: currentKeyMode })).result;
 
 					// check if key has operations waiting in next key
 					if (objectHasOperationsStatus) {
 						// compute status
-						let operationStatus = await sweep({ schema: { [currentKeyAsNewPropertyName]: 1  }, subject: { [key]: result[objectPropertyInfo?.currentKeyAlias || key] } })
-						result[objectPropertyInfo?.currentKeyAlias || key] = operationStatus.schemaPass 
-							? operationStatus.result[key] 
-							: operationStatus.result[key] instanceof Array ? [] : Object.create(null);
+						let operationStatus = await schemaWalkThrough({ schema: { [currentKeyAsNewPropertyName]: 1  }, subject: { [key]: result[objectPropertyInfo?.currentKeyAlias || key] } })
+						if (!keyOmissionStatus) {
+							result[objectPropertyInfo?.currentKeyAlias || key] = operationStatus.schemaPass 
+								? operationStatus.result[key] 
+								: operationStatus.result[key] instanceof Array ? [] : Object.create(null);
+						} else delete result[objectPropertyInfo?.currentKeyAlias || key];
 
 						// add key pass to its set
 						keyPassSet.add(operationStatus.schemaPass);
@@ -1178,6 +1120,6 @@ const sweep = async({ schema, subject, mode }) => {
 	}
 
 	return { schemaPass, result };
-}
+};
 
-export { filterSchema, laundry };
+export { filterSchema, walkThroughHandler };
