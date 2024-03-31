@@ -20,8 +20,7 @@ const sx = new Syntaxe({
     }`
 });
 
-// await sx.query();
-console.log(await sx.query());
+await sx.query();
 
 /*
 Result:
