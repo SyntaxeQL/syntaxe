@@ -1,4 +1,4 @@
-import Syntaxe from '../../../src/index.js';
+import Syntaxe from '../../../dist/index.min.js';
 
 const sampleData = [
     { id: 1, text: "The quick    brown fox jumps  over the   lazy dog", status: 'Active' },
