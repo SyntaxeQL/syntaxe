@@ -1,13 +1,8 @@
 {
   "name": "syntaxe",
   "version": "1.0.0",
-  "description": "A data query library inspired by graphql",
-  "main": "src/index.js",
+  "description": "A data query library.",
   "type": "module",
-  "directories": {
-    "example": "examples",
-    "data": "data"
-  },
   "scripts": {
     "test": "jest"
   },
