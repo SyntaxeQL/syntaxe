@@ -5,7 +5,7 @@ Syntaxe for JavaScript
 <br/>
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
-![NPM Version](https://img.shields.io/badge/npm-v1.0.0-D50100)
+![NPM Version](https://img.shields.io/badge/npm-v1.0.1-D50100)
 ![Top Language](https://img.shields.io/badge/javascript-100%25-F0DC4E)
 
 <br/>
