@@ -5966,6 +5966,10 @@ You are welcome to contribute or participate in making the library better.
 
 _NOTE: Development of this library in various technologies, such as PHP, C#, Java, Python, and others, is currently ongoing, with support for both standalone and REST API usage._
 
+# Changelog
+
+[All changes to the project](CHANGELOG)
+
 # License
 
 [The MIT License (MIT)](LICENSE)
