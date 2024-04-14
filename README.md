@@ -5968,7 +5968,7 @@ _NOTE: Development of this library in various technologies, such as PHP, C#, Jav
 
 # Changelog
 
-[All changes to the project](CHANGELOG)
+[All changes to the project](CHANGELOG.md)
 
 # License
 
