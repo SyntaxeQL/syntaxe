@@ -177,7 +177,7 @@ const filterSchema = async(schema) => {
 			
 	  	return { status: true, schema: JSON.parse(resolve) };
 	} catch(err) {
-		return { status: false };
+		return { status: false, err };
 	}
 };
 
@@ -217,8 +217,8 @@ const walkThroughHandler = async({ data, status, schema }) => {
 		}
 		return result;
 	} catch(err) {
-		console.error(new Date(), err, schema)
-		return null
+		console.error(new Date(), err, schema);
+		return null;
 	}
 };
 

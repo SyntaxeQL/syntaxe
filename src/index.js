@@ -1,7 +1,7 @@
 import { filterSchema, walkThroughHandler } from './lib/engine.js';
 
 const Syntaxe = class {
-	#data; #schema;
+	#data; #schema; success; error;
 
 	constructor(config = null){
 		this.#init(config);
@@ -12,20 +12,35 @@ const Syntaxe = class {
 			this.#data = config.data || this.#data;
 			this.#schema = config.schema || this.#schema;
 		}
+		this.success = false;
+		this.error = String();
 	}
 
 	async query(config = null){
 		try {
-			if (config)
-				this.#init(config);
+			this.#init(config);
 
 			if (!this.#data)
-				throw new Error(`'data' is invalid.`);
+				this.error = `'data' is invalid.`;
 			else if (!this.#schema)
-				throw new Error(`'schema' is invalid.`);
+				this.error = `'schema' is invalid.`;
 
 			const filtered = await filterSchema(this.#schema);
-			return await walkThroughHandler({ data: this.#data, ...filtered });
+
+			if (filtered.success) {
+				let result = await walkThroughHandler({ data: this.#data, ...filtered });
+				
+				if (result == null || result == undefined) {
+					this.error = `Query failed. Check your schema and try again.`
+					return this.#data;
+				}
+
+				this.success = true;
+				return result;
+			} else {
+				this.error = filtered.err;
+				return this.#data;
+			}
 		} catch(err) { return err; }
 	}
 

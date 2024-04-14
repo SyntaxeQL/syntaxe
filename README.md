@@ -5,12 +5,12 @@ Syntaxe for JavaScript/TypeScript
 <br/>
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
-![NPM Version](https://img.shields.io/badge/npm-v1.2.0-D50100)
+![NPM Version](https://img.shields.io/badge/npm-v1.3.0-D50100)
 ![Top Language](https://img.shields.io/badge/javascript-100%25-F0DC4E)
 
 <br/>
 
-_Syntaxe is a data query library inspired by graphql._
+_Syntaxe is a declarative data querying library inspired by graphql._
 
 Syntaxe, with the help of a schema and a variety of operators, can be used to perform any number of query operations on most types of data e.g. String, Object or Array.
 
@@ -28,6 +28,8 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
   - [Methods 🏒](#methods-)
     - [Instance methods](#instance-methods)
     - [Method chaining](#method-chaining)
+  - [Public properties 📢](#public-properties-)
+    - [success & error](#success--error)
   - [Examples 🎮](#examples-)
     - [Use case 1 (Pass data and schema to the constructor)](#use-case-1-pass-data-and-schema-to-the-constructor)
     - [Use case 2 (Invoke the data and schema methods separately)](#use-case-2-Invoke-the-data-and-schema-methods-separately)
@@ -255,6 +257,14 @@ const result = await useCase1
 // Result: 'orange'
 ```
 
+## Public properties 📢
+
+### success & error
+
+When a query fails in Syntaxe, it doesn't break the execution of your program. Instead it pushes the status of the query and the reason for the failure to object properties that can accessed through the instance, namely:
+- `success` - contains the status of query. Value is `true` or `false`, and
+- `error` - contains some information on why the query failed.
+
 ## Examples 🎮
 
 ### Use case 1 (Pass data and schema to the constructor)
@@ -278,7 +288,14 @@ const useCase1 = new Syntaxe({
     login
   } [first:5]`
 });
-await useCase1.query();
+let result = await useCase1.query();
+
+// Check if the query was successful
+if (useCase1.success) {
+  // Do something with result
+} else {
+  let queryError = useCase1.error;
+}
 
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
@@ -309,7 +326,14 @@ In-line schema
 const useCase2 = new Syntaxe();
 useCase2.data(users);
 useCase2.schema(`[size]`);
-await useCase2.query();
+let result = await useCase2.query();
+
+// Check if the query was successful
+if (useCase2.success) {
+  // Do something with result
+} else {
+  let queryError = useCase2.error;
+}
 
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
@@ -339,6 +363,13 @@ const useCase3Result = await useCase3.query({
     login [as:"userId"]
   } [last]`
 });
+
+// Check if the query was successful
+if (useCase3.success) {
+  // Do something with result
+} else {
+  let queryError = useCase3.error;
+}
 
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
@@ -371,6 +402,13 @@ const useCase4Result1 = await useCase4.query({
   }`
 });
 
+// Check if the query was successful
+if (useCase4.success) {
+  // Do something with result
+} else {
+  let queryError = useCase4.error;
+}
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
@@ -393,7 +431,14 @@ Object schema
 useCase4.schema(`{
   id [as:"sn"] [gt:5]
 } [first:10]`);
-await useCase4.query();
+let result = await useCase4.query();
+
+// Check if the query was successful
+if (useCase4.success) {
+  // Do something with result
+} else {
+  let queryError = useCase4.error;
+}
 
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
@@ -432,6 +477,13 @@ const useCase5Result = await useCase5
                               }`)                              
                               .query();
 
+// Check if the query was successful
+if (useCase5.success) {
+  // Do something with result
+} else {
+  let queryError = useCase5.error;
+}
+
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
 
@@ -462,7 +514,14 @@ const useCase6Result = useCase6
                         } [size]`)
                         .query();
 
-useCase6Result.then((result) => {});
+useCase6Result.then((result) => {
+  // Check if the query was successful
+  if (useCase6.success) {
+    // Do something with result
+  } else {
+    let queryError = useCase6.error;
+  }
+});
 
 /*
 Result is based on the state of the data returned by 'https://api.github.com/users' as of February 12, 2024.
@@ -5905,7 +5964,7 @@ If you have any issues using the library, please contact me by email [lolu.shola
 
 You are welcome to contribute or participate in making the library better.
 
-_NOTE: Development of this library in various technologies, including PHP, C#, Java, Python, and others, is currently underway, with support for both standalone and REST API usage._
+_NOTE: Development of this library in various technologies, such as PHP, C#, Java, Python, and others, is currently ongoing, with support for both standalone and REST API usage._
 
 # License
 
