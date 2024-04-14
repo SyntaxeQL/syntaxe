@@ -52,6 +52,7 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
   - [Time operators](#time-operators)
   - [Ago operators](#ago-operators)
 - [Support and Feedback](#support-and-feedback)
+- [Changelog](#changelog)
 - [License](#license)
 
 # Installation
