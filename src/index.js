@@ -27,7 +27,7 @@ const Syntaxe = class {
 
 			const filtered = await filterSchema(this.#schema);
 
-			if (filtered.success) {
+			if (filtered.status) {
 				let result = await walkThroughHandler({ data: this.#data, ...filtered });
 				
 				if (result == null || result == undefined) {
