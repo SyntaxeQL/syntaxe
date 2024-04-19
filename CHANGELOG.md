@@ -2,9 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.3.1] - 2024-04-15
+## [1.3.2] - 2024-04-19
 
 ### Added
+
+- ESM and CommonJs support
+
+## [1.3.1] - 2024-04-15
+
+### Fixed
 
 - Bug in schema scanner resolved
 

@@ -1,4 +1,4 @@
-import Syntaxe from '../../../dist/index.min.js';
+import Syntaxe from '../../../dist/esm/index.js';
 
 /*
 Return first 10 entries for data

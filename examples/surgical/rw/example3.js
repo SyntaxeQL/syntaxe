@@ -1,4 +1,4 @@
-import Syntaxe from '../../../dist/index.min.js';
+import Syntaxe from '../../../dist/esm/index.js';
 
 const sampleData = [
     { id: 1, text: "The quick    brown fox jumps  over the   lazy dog.", status: 'Active', mobileNo: "(614) 921-0044" },

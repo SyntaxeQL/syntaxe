@@ -5,7 +5,7 @@ Syntaxe for JavaScript/TypeScript
 <br/>
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-0091F7)](./LICENSE)
-![NPM Version](https://img.shields.io/badge/npm-v1.3.1-D50100)
+![NPM Version](https://img.shields.io/badge/npm-v1.3.2-D50100)
 ![Top Language](https://img.shields.io/badge/javascript-100%25-F0DC4E)
 
 <br/>
@@ -19,7 +19,8 @@ Syntaxe, with the help of a schema and a variety of operators, can be used to pe
 - [Installation](#installation)
   - [Setup 💾](#setup-)
 - [Example](#example)
-  - [A basic example](#a-basic-example)
+  - [A basic example (ES Modules)](#a-basic-example-es-modules)
+  - [A basic example (CommonJs)](#a-basic-example-commonjs)
 - [Usage](#usage)
   - [Schema️ ✍🏽️](#schema-%EF%B8%8F)
     - [Whatsa Skee-ma-ah?](#whatsa-skee-ma-ah)
@@ -65,7 +66,7 @@ npm install syntaxe
 
 # Example
 
-### A basic example
+### A basic example (ES Modules)
 
 ```js
 import Syntaxe from "syntaxe";
@@ -75,14 +76,27 @@ const sx = new Syntaxe({
   schema: `[size]`
 });
 
-// Promise
-sx.query().then((result) => {});
+const result = await sx.query();
 // Result: 3
 
 // OR
 
-// Await
-const result = await sx.query();
+sx.query().then((result) => {});
+// Result: 3
+
+```
+
+### A basic example (CommonJs)
+
+```js
+const Syntaxe = require("syntaxe");
+
+const sx = new Syntaxe({
+  data: [1,2,3],
+  schema: `[size]`
+});
+
+sx.query().then((result) => {});
 // Result: 3
 
 ```

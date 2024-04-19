@@ -1,4 +1,4 @@
-import Syntaxe from '../../../dist/index.min.js';
+import Syntaxe from '../../../dist/esm/index.js';
 
 /*
 Replace any occurrence of whitespace with no space

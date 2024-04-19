@@ -1,4 +1,4 @@
-import Syntaxe from '../../../dist/index.min.js';
+import Syntaxe from '../../../dist/esm/index.js';
 import appUsers from '../../../data/app-users.js';
 
 // COND operator is applied to object properties
