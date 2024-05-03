@@ -26,18 +26,6 @@ export const patterns = {
 	}
 };
 
-// define objects holder
-export const holder = {
-	propertyOps 	: null,
-	objectOps			: null,
-	rootOp 				: null,
-	rootKey 			: 'root',
-	context 			: 'json',
-	mode 					: 'and',
-	condition 		: 'and',
-	defaultDate		: [1991,6,1]
-};
-
 // month map
 export const monthMap = new Map([
 	[0, ['january', 'jan']], [1, ['february', 'feb']], [2, ['march', 'mar']],

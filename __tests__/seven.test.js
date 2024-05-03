@@ -1,4 +1,4 @@
-import Syntaxe from '../dist/index.min.js';
+import Syntaxe from '../dist/esm/index.js';
 import appUsers from '../data/app-users.js';
 
 test(`Return id and lastLogin as date of data where:

@@ -1,4 +1,4 @@
-import { filterSchema, walkThroughHandler } from './lib/engine.js';
+import { SyntaxeEngine } from './lib/engine.js';
 
 const Syntaxe = class {
 	#data; #schema; success; error;
@@ -25,10 +25,12 @@ const Syntaxe = class {
 			else if (!this.#schema)
 				this.error = `'schema' is invalid.`;
 
-			const filtered = await filterSchema(this.#schema);
+			const syntaxeEngine = new SyntaxeEngine();
+
+			const filtered = await syntaxeEngine.filterSchema(this.#schema);
 
 			if (filtered.status) {
-				let result = await walkThroughHandler({ data: this.#data, ...filtered });
+				let result = await syntaxeEngine.walkThroughHandler({ data: this.#data, ...filtered });
 				
 				if (result == null || result == undefined) {
 					this.error = `Query failed. Check your schema and try again.`

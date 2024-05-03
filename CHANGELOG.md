@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2024-05-03
+
+### Added
+
+- New SyntaxeEngine class for better handling of concurrent query operations
+
 ## [1.3.2] - 2024-04-19
 
 ### Added

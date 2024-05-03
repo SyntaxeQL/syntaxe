@@ -1,4 +1,4 @@
-import Syntaxe from '../dist/index.min.js';
+import Syntaxe from '../dist/esm/index.js';
 import appUsersLite from '../data/app-users-lite.js';
 
 test(`Return id fullName as name for the last entry of data where package is 'free'.
