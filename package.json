@@ -1,6 +1,6 @@
 {
   "name": "syntaxe",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A declarative data querying library inspired by graphql.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

@@ -14,6 +14,9 @@ const regexify = (pattern, regexStart, regexEnd, options) =>
 // parse date
 const dateify = (...arg) => arg.length ? new Date(...arg) : new Date();
 
+// convert to json
+const jsonify = (data) => JSON.parse(JSON.stringify(data));
+
 // get random string
 const randomKey = (length, start, end) => Math.random().toString(length ?? 20).substring(start ?? 2, end ?? 12);
 
@@ -205,8 +208,8 @@ export const SyntaxeEngine = class {
 		try {
 			// convert data to json
 			const subject = (typeof data == 'string') 
-				? (this.#holder.context != 'root' ? JSON.parse(data) : data) 
-				: data;
+				? (this.#holder.context != 'root' ? JSON.parse(data) : jsonify(data)) 
+				: jsonify(data);
 			
 			// process the schema and subject
 			let result = (this.#holder.context == 'json') 

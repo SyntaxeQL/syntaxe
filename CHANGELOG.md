@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.4] - 2024-05-04
+
+### Added
+
+- Support for BSON (e.g. MongoDB data)
+
 ## [1.3.3] - 2024-05-03
 
 ### Added
